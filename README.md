@@ -31,6 +31,7 @@
 | `spec/positioning-A.md` | **路径 A 执行准则**——四条铁律：配额制降格 / 金手指克制 / 早期情感锚点 / 设定减负 |
 | `spec/season1-settings-inventory.md` | **第一季设定清单**——所有设定分三档（进正文 / 背景 / 留后续）绑定 12 集，防"设定比故事大" |
 | `spec/emotional-beats-ep1-4.md` | **前 4 集情感锚点方案**——ep3 升级为情感锚点的具体改法 |
+| `spec/scene-craft-checklist.md` | **场景手艺检查表**——每场戏过稿工具：六套路 + 三问一票否决 + 设定密度红线。治"为介绍而介绍"，核心永远推动剧情 |
 | `spec/ep01-quality-gate.md` | **ep1 质量门禁报告**——五维评分 8.4、去 AI 感检查、连续性处理记录 |
 
 ### 📊 连续性台账（别写乱 · 每集写完更新）
@@ -53,9 +54,9 @@
 
 ## 写作工作流
 
-1. 开写一集前 → 读 `constitution.md` 红线 + `season1-settings-inventory.md` 确认本集启用哪几条设定
+1. 开写一集前 → 读 `constitution.md` 红线 + `season1-settings-inventory.md` 确认本集启用哪几条设定（≤3 样正面撞到）
 2. 起草 → 对齐 `ep01-quality-gate.md` 认证的标杆节奏与文风
-3. 写完 → 过质量门禁（五维评分 + 去 AI 感四感检查）
+3. 写完 → 过 `scene-craft-checklist.md` 三问表（逐场戏）+ 宪法第六条五维评分 + 去 AI 感四感检查
 4. 定稿 → 更新 `spec/tracking/` 四本台账（伏笔 / 时间线 / 角色 / 关系）
 
 ## 当前进度
