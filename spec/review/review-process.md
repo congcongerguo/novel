@@ -13,7 +13,7 @@
 | **粒度** | 一集 / 一场戏 | 一幕（3–4 集）/ 整季 |
 | **时机** | 每集起草完，定稿前 | 每完成一幕一次；整季完成一次 |
 | **抓什么** | 本集的场景冲突、五维、AI 感 | 只有通读才暴露的**跨集模式** |
-| **产出** | `season1-review.md` 该集批注块 + 台账更新 | `season1-review.md` 宏观发现 + 修改优先级 |
+| **产出** | `season1/epNN.md` 单集批注 + 台账更新 | `season1/_overview.md` 总表 + 宏观发现 + 修改优先级 |
 | **门槛** | 任一维 <7 或三问有场不过 → 不得定稿 | 发现跨集模式 → 进修改优先级清单 |
 
 ---
@@ -22,12 +22,12 @@
 
 每集起草完成后、进入"定稿"前，依次跑：
 
-1. **三问表**（`scene-craft-checklist.md`）——逐场戏：①欲望/障碍 ②除介绍设定还做哪两件 ③撞到/告诉。任一场不过 → 改造，不得定稿。
-2. **设定密度红线**——本集正面"撞到"的新设定 ≤ 3 样；超标回 `season1-settings-inventory.md` 重新分档。
+1. **三问表**（`../scene-craft-checklist.md`）——逐场戏：①欲望/障碍 ②除介绍设定还做哪两件 ③撞到/告诉。任一场不过 → 改造，不得定稿。
+2. **设定密度红线**——本集正面"撞到"的新设定 ≤ 3 样；超标回 `../season1-settings-inventory.md` 重新分档。
 3. **五维评分**（宪法第六条）——结构 / 角色 / 节奏 / 文风 / 连续性，各 10 分。**任一维 <7 → 返工。**
 4. **去 AI 感四感**——均匀 / 解释 / 安全 / 模板。⚠️ 项记入批注。
 5. **台账更新**——`plot-tracker.json`（伏笔埋/收）、`timeline.json`、`character-state.json`、`relationships.json`。**伏笔连续 3 集未回收 → 预警。**
-6. **产出**：在 `season1-review.md` 写该集批注块（功能 / 三问 / 去 AI 感 / 批注 / 总评）。
+6. **产出**：在 `season1/epNN.md` 写该集单集批注（功能 / 三问 / 去 AI 感 / 批注 / 总评）。
 
 > Tier 1 的盲区（必须靠 Tier 2 兜）：它只看"这一集内部"，看不见这一集和前几集**是否在重复自己**。
 
@@ -50,21 +50,28 @@
 7. **设定密度分布**——有无某几集设定超载（展厅感）、某几集设定真空？
 
 ### 产出
-- `season1-review.md` 顶部**五维总表**（薄弱集一目了然）。
+写入 `season1/_overview.md`：
+- **五维总表**（薄弱集一目了然）。
 - **宏观发现**段（本次通读抓到的跨集模式）。
 - **修改优先级**清单（高/中/低，标注是打磨还是返工）。
 
 ---
 
-## 与既有文档的关系
+## 目录结构与文档关系
 
 ```
-宪法第六条（质量门禁）
-   └─ review-process.md（本文件：定义两层、时机、维度）
-        ├─ Tier 1 用 → scene-craft-checklist.md（三问）+ season1-settings-inventory.md（密度）
-        ├─ 两层产出都写入 → season1-review.md（评审文本，只读正文不改正文）
-        └─ Tier 1 第 5 步更新 → spec/tracking/*.json（台账）
+spec/
+├─ scene-craft-checklist.md          三问表/六套路（Tier 1 用）
+├─ season1-settings-inventory.md     设定密度分档（Tier 1 用）
+├─ review/                           ← 评审的家
+│   ├─ review-process.md             本文件：定义两层、时机、维度
+│   └─ season1/
+│       ├─ _overview.md              Tier 2 整体评审（总表+宏观发现+优先级）
+│       └─ ep01.md … ep12.md         Tier 1 单集批注（每集一个）
+└─ tracking/*.json                   台账（Tier 1 第 5 步更新）
 ```
+
+> 新季评审：在 `review/` 下新建 `seasonN/`，沿用 `_overview.md + epNN.md` 结构。
 
 **铁律**：评审只诊断、不改正文。定稿修改一律在 `chapters/` 里单独做，改完重跑对应层评审。
 
