@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陆远 · 角色形象生成（2026-08-25）</title>
+<style>
+  :root {
+    --bg: #16181d;
+    --panel: #1f232b;
+    --panel2: #262b35;
+    --text: #e8eaf0;
+    --muted: #9aa3b2;
+    --accent: #e0a64a;
+    --real: #e0794a;
+    --anime: #7aa2f7;
+    --border: #333a46;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    padding: 32px 24px 60px;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  header { margin-bottom: 28px; }
+  h1 { font-size: 26px; font-weight: 700; }
+  .sub { color: var(--muted); margin-top: 8px; font-size: 14px; line-height: 1.7; }
+  .badges { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .badge {
+    font-size: 12px; padding: 4px 12px; border-radius: 20px;
+    border: 1px solid var(--border); color: var(--muted);
+  }
+  .badge b { color: var(--text); font-weight: 600; }
+  section { margin-top: 36px; }
+  .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .sec-head .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .sec-head h2 { font-size: 19px; font-weight: 700; }
+  .sec-head .hint { color: var(--muted); font-size: 13px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; transition: transform .15s, border-color .15s;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #0d0f13; }
+  .card .meta { padding: 10px 12px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+  .card .meta .seed { color: var(--text); font-weight: 600; }
+  .real .dot { background: var(--real); }
+  .anime .dot { background: var(--anime); }
+  footer { margin-top: 40px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+  code { background: var(--panel2); padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>陆远 · 角色形象生成</h1>
+    <div class="sub">
+      依据 <code>spec/characters/陆远.md</code> 定妆提示词生成 · 模型 Krea2 RedMix（euler / sgm_uniform / 8 步 / cfg 1 / 1024×1024）<br>
+      真实风格 ×10（种子 10101–10110） · 动画风格 ×10（种子 20201–20210）
+    </div>
+    <div class="badges">
+      <span class="badge">📄 档案 <b>v1.0</b></span>
+      <span class="badge">🎨 风格 <b>2</b></span>
+      <span class="badge">🖼️ 出图 <b>20/20</b></span>
+      <span class="badge">📅 <b>2026-08-25</b></span>
+    </div>
+  </header>
+
+  <section class="real">
+    <div class="sec-head">
+      <span class="dot"></span>
+      <h2>真实风格（写实电影质感）</h2>
+      <span class="hint">蹲在巷口修设备 · 黑框眼镜缠胶带 · 洗白格子衬衫 · 油灰指甲缝</span>
+    </div>
+    <div class="grid" id="real-grid"></div>
+  </section>
+
+  <section class="anime">
+    <div class="sec-head">
+      <span class="dot"></span>
+      <h2>动画风格（2D 动漫关键帧）</h2>
+      <span class="hint">同一角色要素 · 动漫插画质感</span>
+    </div>
+    <div class="grid" id="anime-grid"></div>
+  </section>
+
+  <footer>
+    输出目录：<code>releases/2026-08-25/陆远形象/</code>（real/ 与 anime/ 分目录）<br>
+    生成脚本：<code>.workbuddy/tmp/gen_luyuan.py</code>（可复用：改提示词与种子即可重跑）
+  </footer>
+</div>
+<script>
+  function buildGrid(el, dir, prefix, count, seedBase) {
+    let html = '';
+    for (let i = 1; i <= count; i++) {
+      const no = String(i).padStart(2, '0');
+      html += `<div class="card">
+        <img loading="lazy" src="${dir}/${prefix}_${no}.png" alt="${prefix}_${no}">
+        <div class="meta"><span>${prefix}_${no}</span><span class="seed">seed ${seedBase + i - 1}</span></div>
+      </div>`;
+    }
+    el.innerHTML = html;
+  }
+  buildGrid(document.getElementById('real-grid'), 'real', 'real', 10, 10101);
+  buildGrid(document.getElementById('anime-grid'), 'anime', 'anime', 10, 20201);
+</script>
+</body>
+</html>
