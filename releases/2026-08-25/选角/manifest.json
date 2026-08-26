@@ -1,0 +1,41 @@
+{
+  "denoise": 0.78,
+  "style": "anime style, 2D anime illustration, clean lineart, vibrant colors, cinematic anime key visual",
+  "cast": {
+    "陆远": {
+      "front": 1018934058,
+      "side": 1141160237,
+      "back": 1297383343
+    },
+    "赵满秋": {
+      "front": 98600829,
+      "side": 1779782018,
+      "back": 157955827
+    },
+    "老魏": {
+      "front": 1343256690,
+      "side": 664903576,
+      "back": 330750393
+    },
+    "沈恪": {
+      "front": 1098438188,
+      "side": 440955879,
+      "back": 272484656
+    },
+    "七号EX-07": {
+      "front": 249137928,
+      "side": 850207122,
+      "back": 151522859
+    },
+    "李叔": {
+      "front": 376691879,
+      "side": 232725727,
+      "back": 1287107683
+    },
+    "刘婶": {
+      "front": 1877285242,
+      "side": 97121705,
+      "back": 458418093
+    }
+  }
+}
