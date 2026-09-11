@@ -7,10 +7,24 @@
   python gen_ep01_h3.py all            # 全部 25 镜
 输出：releases/2026-09-12_ep01视频/<镜号>_<名>.mp4
 """
-import json, os, sys, time, uuid, mimetypes, urllib.request, urllib.error
+import json, os, sys, time, uuid
 from pathlib import Path
+from urllib.parse import quote
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 HOST = "http://127.0.0.1:8188"
+
+# 连接池 + 自动重试：2026-09-12 事故修复
+# 根因：urllib 每次新建连接 → Windows TIME_WAIT 堆积 → 动态端口耗尽
+#      → 提交/查询时报 WinError 10053/10054（7 镜连丢）
+S = requests.Session()
+_RETRY = Retry(total=6, backoff_factor=1.5,
+               status_forcelist=[500, 502, 503, 504],
+               allowed_methods=frozenset(["GET", "POST"]))
+S.mount("http://", HTTPAdapter(max_retries=_RETRY, pool_connections=4, pool_maxsize=4))
+
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
 FRAME_DIR = ROOT / "releases" / "2026-09-12_ep01分镜图"
 OUT_DIR = ROOT / "releases" / "2026-09-12_ep01视频"
@@ -326,19 +340,20 @@ overall_soundscape: {sound}.
 non_diegetic_music: N/A"""
 
 
-def upload(path, name):
-    boundary = "----wb" + uuid.uuid4().hex
+def upload(path, name, tries=5):
+    """上传参考图到 ComfyUI（连接复用 + 重试）"""
     data = Path(path).read_bytes()
-    ct = mimetypes.guess_type(str(path))[0] or "image/png"
-    b = b""
-    b += ("--%s\r\nContent-Disposition: form-data; name=\"image\"; filename=\"%s\"\r\nContent-Type: %s\r\n\r\n"
-          % (boundary, name, ct)).encode("utf-8")
-    b += data
-    b += ("\r\n--%s\r\nContent-Disposition: form-data; name=\"overwrite\"\r\n\r\ntrue\r\n--%s--\r\n"
-          % (boundary, boundary)).encode("utf-8")
-    req = urllib.request.Request(HOST + "/upload/image", data=b,
-                                 headers={"Content-Type": "multipart/form-data; boundary=" + boundary})
-    return json.load(urllib.request.urlopen(req, timeout=300))["name"]
+    for k in range(tries):
+        try:
+            r = S.post(HOST + "/upload/image",
+                       files={"image": (name, data, "image/png")},
+                       data={"overwrite": "true"}, timeout=(10, 300))
+            r.raise_for_status()
+            return r.json()["name"]
+        except Exception as e:
+            print("     上传重试 %d/%d: %s" % (k + 1, tries, e), flush=True)
+            time.sleep(5)
+    raise RuntimeError("upload failed: " + str(path))
 
 
 def build(prompt, first_img, seed, prefix, frames):
@@ -371,8 +386,11 @@ def fetch(url, out, tries=4):
     """带重试的下载（ComfyUI 连接会抖动，一次失败不该毁掉整批）"""
     for k in range(tries):
         try:
-            with urllib.request.urlopen(url, timeout=900) as f, open(out, "wb") as o:
-                o.write(f.read())
+            r = S.get(url, timeout=(10, 900), stream=True)
+            r.raise_for_status()
+            with open(out, "wb") as o:
+                for chunk in r.iter_content(1 << 20):
+                    o.write(chunk)
             return True
         except Exception as e:
             print("     下载失败(第%d/%d次): %s" % (k + 1, tries, e), flush=True)
@@ -392,19 +410,19 @@ def gen(shot):
     prompt = h3_prompt(shot)
     seed = 2026091200 + int(shot[1:])
     w = build(prompt, first, seed, "h3/ep01_%s" % shot, frames)
-    req = urllib.request.Request(HOST + "/prompt", data=json.dumps({"prompt": w}).encode("utf-8"),
-                                 headers={"Content-Type": "application/json"})
     t0 = time.time()
     try:
-        r = json.load(urllib.request.urlopen(req, timeout=120))
-    except urllib.error.HTTPError as e:
-        print("[%s] 提交失败: %s" % (shot, e.read().decode("utf-8", errors="replace")[:800])); return
-    pid = r["prompt_id"]
+        r = S.post(HOST + "/prompt", json={"prompt": w}, timeout=(10, 180))
+        r.raise_for_status()
+        pid = r.json()["prompt_id"]
+    except Exception as e:
+        body = getattr(getattr(e, "response", None), "text", "")
+        print("[%s] 提交失败: %s %s" % (shot, e, str(body)[:600]), flush=True); return
     print("[%s] 提交 pid=%s frames=%d" % (shot, pid, frames), flush=True)
     while True:
-        time.sleep(10)
+        time.sleep(15)
         try:
-            h = json.load(urllib.request.urlopen(HOST + "/history/" + pid, timeout=20))
+            h = S.get(HOST + "/history/" + pid, timeout=(10, 30)).json()
         except Exception:
             continue
         if pid in h:
@@ -421,7 +439,7 @@ def gen(shot):
                         fn = it.get("filename")
                         if not fn:
                             continue
-                        q = "/view?filename=%s&subfolder=%s&type=output" % (urllib.request.quote(fn), urllib.request.quote(it.get("subfolder", "")))
+                        q = "/view?filename=%s&subfolder=%s&type=output" % (quote(fn), quote(it.get("subfolder", "")))
                         OUT_DIR.mkdir(parents=True, exist_ok=True)
                         if fetch(HOST + q, out):
                             print("[%s] OK %.0fs -> %s (%.1f MB)" % (shot, time.time() - t0, out.name, out.stat().st_size / 1e6), flush=True)
