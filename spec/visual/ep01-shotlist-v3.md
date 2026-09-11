@@ -237,3 +237,43 @@ NEG  = （沿用 visual-spec-lock §4.3 全文，含竖屏负向词 letterbox / 
    - 理由：各写一遍必然错乱（配给点曾出现 +1.4~+37.2 的散乱分布，且 s08–s11 误成"面对观众"）
 9. **⚠️ Seedream 提示词零否定词**——"不要冷/not too dark"会被反向执行（见 `生成管线.md` §二·C）
 10. 脚本：`python .workbuddy/scripts/seedream_batch.py all`（已存在自动跳过）；改图前先把旧图改名备份（`.v2` / `.preanchor` 等）
+
+---
+
+## 七、视频进度（MiniMax H3 · 本地 ComfyUI · 全部 25 镜已完成）
+
+> 脚本：`tools/gen_ep01_h3.py`（`python gen_ep01_h3.py s01` ／ `all`）
+> 输出：`releases/2026-09-12_ep01视频/`
+> 规格：**480×832 竖屏 / 24fps / 全部含音频轨（H3 原生声景）**
+
+### ✅ 25/25 镜齐全（2026-09-12）
+
+**成片合计 230.5 秒（3 分 50 秒）**，总 23.6 MB，单镜 5.88s–12.96s。
+
+**帧数表**：全部按 H3 约束 `124 + 17k`（k=0..10 → 124/141/158/175/192/209/226/243/260/277/294 帧）
+
+**H3 提示词结构**（每镜 7 段，见 `tools/gen_ep01_h3.py` 的 `P` 字典）：
+`subject_definitions` / `summary` / `retention_analysis`（哪些参考图元素保留） / `detailed_description`（含逐段分时动作） / `overall_soundscape`（环境音） / 旋律层
+
+### ⚠️ 两条必须遵守的工程铁律（踩过的坑）
+
+1. **H3 批次必须串行**——并行跑两批会抢同一 GPU，单镜耗时从 6–7 分钟暴涨到 **11–38 分钟**（s04 曾 38.75 分钟）。想省时间反而更慢
+2. **Windows TIME_WAIT 端口耗尽**——用 `urllib` 每 10 秒轮询会新建 TCP 连接，一镜 40–80 次 → 临时端口耗尽 → **提交/下载被系统掐断**。根治：`requests.Session` 连接池 + `urllib3.Retry` + 轮询放宽到 15s（脚本已改）
+
+**容错机制（已内置）**：
+- 下载**重试 4 次**（间隔 10s、超时 900s）
+- 下载彻底失败 → 记录 pid 到 `_待取回.json`，**事后可用 `/view` 单独取回，不必重新生成**（s12 就是这么捞回来的）
+- 单镜异常**只跳过该镜**，不终止整批
+
+**产物取回（ComfyUI history 法）**：视频已生成但脚本中断时，可从 `/history/<pid>` 的 `outputs` 取 `filename/subfolder`，用 `/view?filename=…&subfolder=…&type=output` 下载——**别重跑**。
+
+---
+
+## 八、下一步：配音 + 剪辑
+
+**工具链已探明**：
+- **ffmpeg 不在 PATH** → 用 `C:/Users/oo/anaconda3/envs/indextts/Library/bin/ffmpeg.exe`（ffprobe 同目录）
+- TTS 可用 envs：`indextts` / `gpt-sovits` / `cosyvoice`
+- **H3 只出声景，不含对白** → 台词与 V.O. 必须单独配音后混轨
+
+**台本见**：`spec/visual/ep01-配音剪辑台本.md`
