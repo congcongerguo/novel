@@ -367,6 +367,19 @@ def build(prompt, first_img, seed, prefix, frames):
     }
 
 
+def fetch(url, out, tries=4):
+    """带重试的下载（ComfyUI 连接会抖动，一次失败不该毁掉整批）"""
+    for k in range(tries):
+        try:
+            with urllib.request.urlopen(url, timeout=900) as f, open(out, "wb") as o:
+                o.write(f.read())
+            return True
+        except Exception as e:
+            print("     下载失败(第%d/%d次): %s" % (k + 1, tries, e), flush=True)
+            time.sleep(10)
+    return False
+
+
 def gen(shot):
     fname, cname, frames = SHOTS[shot]
     src = FRAME_DIR / fname
@@ -376,8 +389,7 @@ def gen(shot):
     if out.exists() and out.stat().st_size > 50_000:
         print("[%s] 已存在，跳过" % shot); return
     first = upload(src, "h3_%s_first.png" % shot)
-    prompt = h3_prompt(shot) if shot in P else h3_prompt("s17").replace("crouched in front of the rusted machine, its screen lighting his face from below, expression blank and still, dust in the air",
-        "the scene shown in <Picture 1>")
+    prompt = h3_prompt(shot)
     seed = 2026091200 + int(shot[1:])
     w = build(prompt, first, seed, "h3/ep01_%s" % shot, frames)
     req = urllib.request.Request(HOST + "/prompt", data=json.dumps({"prompt": w}).encode("utf-8"),
@@ -411,13 +423,21 @@ def gen(shot):
                             continue
                         q = "/view?filename=%s&subfolder=%s&type=output" % (urllib.request.quote(fn), urllib.request.quote(it.get("subfolder", "")))
                         OUT_DIR.mkdir(parents=True, exist_ok=True)
-                        with urllib.request.urlopen(HOST + q, timeout=600) as f, open(out, "wb") as o:
-                            o.write(f.read())
-                        print("[%s] OK %.0fs -> %s (%.1f MB)" % (shot, time.time() - t0, out.name, out.stat().st_size / 1e6))
-                        got = True
-            if got:
-                return
-            print("[%s] 完成但未取到视频产物，输出结构: %s" % (shot, json.dumps(h[pid].get("outputs", {}), ensure_ascii=False)[:300]))
+                        if fetch(HOST + q, out):
+                            print("[%s] OK %.0fs -> %s (%.1f MB)" % (shot, time.time() - t0, out.name, out.stat().st_size / 1e6), flush=True)
+                            got = True
+                        else:
+                            # 下载彻底失败：记录 pid，便于事后用 /view 单独取回
+                            fp = OUT_DIR / "_待取回.json"
+                            rec = {}
+                            if fp.exists():
+                                try: rec = json.loads(fp.read_text(encoding="utf-8"))
+                                except Exception: rec = {}
+                            rec[shot] = {"pid": pid, "filename": fn, "subfolder": it.get("subfolder", "")}
+                            fp.write_text(json.dumps(rec, ensure_ascii=False, indent=2), encoding="utf-8")
+                            print("[%s] 生成成功但下载失败，已记录到 _待取回.json（pid=%s）" % (shot, pid), flush=True)
+            if not got:
+                print("[%s] 完成但未取到视频产物: %s" % (shot, json.dumps(h[pid].get("outputs", {}), ensure_ascii=False)[:300]))
             return
 
 
@@ -428,6 +448,13 @@ if __name__ == "__main__":
     print("角色参考已上传:", n1, n2, flush=True)
     args = sys.argv[1:] or ["s01"]
     targets = list(SHOTS.keys()) if args == ["all"] else args
+    ok, fail = [], []
     for s in targets:
-        gen(s)
-    print("done.")
+        try:
+            gen(s)
+            ok.append(s)
+        except Exception as e:
+            # 单镜异常不再终止整批
+            print("[%s] 异常、跳过: %s: %s" % (s, type(e).__name__, e), flush=True)
+            fail.append(s)
+    print("done. 尝试 %d 镜 | 异常 %d 镜%s" % (len(targets), len(fail), (" -> " + ",".join(fail)) if fail else ""))
