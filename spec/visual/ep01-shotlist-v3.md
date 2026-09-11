@@ -221,4 +221,8 @@ NEG  = （沿用 visual-spec-lock §4.3 全文，含竖屏负向词 letterbox / 
 3. 参考图路径：陆远 `luyuan` / 赵满秋 `zhaomanqiu` / 老魏 `laowei` / 沈恪 `shenge` / 李叔 `lishu`
 4. **单场配角不单独出基准图**（大姐、卖旧零件摊主、卖废铁老头、带泵年轻人）——只出现 1–2 镜，脸漂移风险低，直接文生图
 5. 风格基底一律拼 `W`（暖调清洁配方，中英混写，含 `not desaturated, not gray, not cold`）
-6. 脚本：`python .workbuddy/scripts/seedream_batch.py all`（已存在自动跳过）
+6. **⚠️ 年代质感铁律：2055 年没有线缆（2026-09-12 作者指出）**
+   - 这个世界的设备**全部无线**：耳机是**耳内隐形/贴片式**（肤色、几乎看不见、**绝无耳机线、无耳挂线、无头戴横梁**），充电靠贴身设备/无线场
+   - **唯一的"线"来自 2026**——陆远那个两脚扁插充电头（自带一段线）。**"线"本身就是旧世界的标志物**，这是他和这个时代的隔阂的视觉化
+   - 出图时提示词必带：`no wires, no cables, no headphone band, invisible in-ear device`
+7. 脚本：`python .workbuddy/scripts/seedream_batch.py all`（已存在自动跳过）；改图前先把旧图改名 `.old` 备份
