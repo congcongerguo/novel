@@ -1095,6 +1095,7 @@ SHOTS["s25"] = dict(
 # ─────────────────────────── 提示词装配 ───────────────────────────
 
 def h3_prompt(shot):
+    """参考图生视频模式的提示词（保留 <Picture i> 引用）。"""
     s = SHOTS[shot]
     out = []
     out.append("subject_definitions:")
@@ -1123,7 +1124,32 @@ def h3_prompt(shot):
     return "\n".join(out)
 
 
+def i2v_prompt(shot):
+    """图生视频模式的提示词：首帧由节点 first_frame 作**几何锚点**，
+    因此不能再用 <Picture 1> 指代首帧（该模式没有 ref_image_1）。
+    <Picture 2> / <Picture 3>（定妆卡 / 全身正面）仍作为身份参考保留。"""
+    p = h3_prompt(shot)
+    p = p.replace(" in <Picture 1>:", " (as established in the provided first frame):")
+    p = p.replace("<Picture 1> is the first frame of [Shot 1]: ",
+                  "The provided first frame of [Shot 1] shows: ")
+    p = p.replace("The target video starts from <Picture 1> as its exact first frame:",
+                  "The target video continues directly from the provided first frame:")
+    p = p.replace("<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this "
+                  "exact frame and develops forward from it.",
+                  "The provided first frame (the [Shot 1] keyframe): fully_preserved - the video "
+                  "opens on this exact frame and develops forward from it.")
+    p = p.replace("as in <Picture 1>.", "as in the provided first frame.")
+    p = p.replace("in <Picture 1>", "in the provided first frame")
+    p = p.replace("[Shot 1] The shot begins from <Picture 1>: the opening frame of <Picture 1> "
+                  "is held exactly, then the action develops forward from it.",
+                  "[Shot 1] The shot begins exactly on the provided first frame: that frame is "
+                  "held as the video's first frame, then the action develops forward from it.")
+    return p
+
+
 def build(prompt, first_img, seed, prefix, frames):
+    """⚠️ 用 Yuan_MiniMaxH3Video · mode=图生视频 —— 首帧作几何锚点（corr 0.999 实测锁定）。
+    不要换回 MiniMaxH3ReferenceToVideo：那个节点没有 first_frame 通道，首帧锁不住。"""
     return {
         "119": {"class_type": "VAELoader", "inputs": {"vae_name": "minimax\\minimax_h3_video_vae_fp16.safetensors"}},
         "120": {"class_type": "VAELoader", "inputs": {"vae_name": "minimax\\minimax_h3_audio_vae_fp32.safetensors"}},
@@ -1132,11 +1158,13 @@ def build(prompt, first_img, seed, prefix, frames):
         "137": {"class_type": "LoadImage", "inputs": {"image": first_img}},
         "139": {"class_type": "LoadImage", "inputs": {"image": "h3_ly_card.png"}},
         "145": {"class_type": "LoadImage", "inputs": {"image": "h3_ly_front.png"}},
-        "136": {"class_type": "MiniMaxH3ReferenceToVideo",
-                "inputs": {"clip": ["128", 0], "vae": ["119", 0], "audio_vae": ["120", 0],
+        "136": {"class_type": "Yuan_MiniMaxH3Video",
+                "inputs": {"mode": "图生视频", "clip": ["128", 0], "vae": ["119", 0],
+                           "audio_vae": ["120", 0],
                            "prompt": prompt, "width": 480, "height": 832, "length": frames,
-                           "ref_image_size": "match",
-                           "ref_images": [{"ref_image": ["137", 0]}, {"ref_image": ["139", 0]}, {"ref_image": ["145", 0]}]}},
+                           "ref_image_size": "匹配",
+                           "first_frame": ["137", 0],
+                           "ref_image_2": ["139", 0], "ref_image_3": ["145", 0]}},
         "126": {"class_type": "BasicGuider", "inputs": {"model": ["151", 0], "conditioning": ["136", 0]}},
         "124": {"class_type": "BasicScheduler", "inputs": {"model": ["151", 0], "scheduler": "simple", "steps": 25, "denoise": 1.0}},
         "123": {"class_type": "KSamplerSelect", "inputs": {"sampler_name": "res_multistep"}},
@@ -1194,7 +1222,7 @@ def gen(shot):
 
     first = upload(src, "h3_%s_first.png" % shot)
     seed = 2026091200 + int(shot[1:])
-    wf = build(h3_prompt(shot), first, seed, "h3/ep01v2_%s" % shot, s["frames"])
+    wf = build(i2v_prompt(shot), first, seed, "h3/ep01v3_%s" % shot, s["frames"])
 
     t0 = time.time()
     try:
