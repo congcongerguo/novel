@@ -2,10 +2,10 @@
 """ep01 成片装配（v2）：拼接 → 混音（旁白/画外音 + 底乐 + 动作音效）→ ASS 字幕 → 片头片尾黑场 → 导出。
 
 依赖：
-  · releases/2026-09-12_ep01视频/sXX_*.mp4          H3 成片（声景 + 中文对白）
-  · releases/2026-09-12_ep01配音/_清单.json          tools/tts_vo.py 产出（旁白/画外音）
-  · releases/2026-09-12_ep01配音/_底乐/ep01_底乐.wav  tools/make_music.py 产出
-  · releases/2026-09-12_ep01配音/_音效/*.wav          tools/make_sfx.py 产出
+  · releases/2026-09-12_ep01_成片包/03_镜头视频/sXX_*.mp4          H3 成片（声景 + 中文对白）
+  · releases/2026-09-12_ep01_成片包/04_配音与音效/_清单.json          tools/tts_vo.py 产出（旁白/画外音）
+  · releases/2026-09-12_ep01_成片包/04_配音与音效/_底乐/ep01_底乐.wav  tools/make_music.py 产出
+  · releases/2026-09-12_ep01_成片包/04_配音与音效/_音效/*.wav          tools/make_sfx.py 产出
 
 ⚠️ 三条关键工程决定（都踩过坑）：
  ① **混音必须在拼接之后、按整片绝对时间做**——单镜内混音会被 `amix duration=first` 按镜长截断
@@ -19,6 +19,9 @@
 """
 import json, subprocess, sys
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 
 FFMPEG = r"C:\Users\oo\anaconda3\envs\indextts\Library\bin\ffmpeg.exe"
 # ⚠️ conda 那个 ffmpeg 是精简构建：**没有 libx264**（`-preset` 报 Unrecognized option）。
@@ -28,11 +31,11 @@ if Path(_FF_FULL).exists():
     FFMPEG = _FF_FULL
 
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
-VID = ROOT / "releases" / "2026-09-12_ep01视频"
-VOICE = ROOT / "releases" / "2026-09-12_ep01配音"
-WORK = VID / "_工作文件"
-MUSIC = VOICE / "_底乐" / "ep01_底乐.wav"
-SFX_DIR = VOICE / "_音效"
+VID = P.EP01_VIDEOS
+VOICE = P.EP01_AUDIO
+WORK = P.EP01_MID
+MUSIC = P.EP01_MUSIC / "ep01_底乐.wav"
+SFX_DIR = P.EP01_SFX
 
 # ── 混音音量（相对值）──
 MUSIC_VOL = 0.30        # 底乐：0.16 时独奏只有 −33.5 dBFS（手机喇叭基本听不见）→ 抬到约 −29 dBFS
@@ -134,7 +137,7 @@ def concat():
 # ─────────────── ② 混音（旁白 + 画外音 + 底乐 + 音效）───────────────
 def mix(src):
     off, dur_of = timeline()
-    man = json.loads((VOICE / "_清单.json").read_text(encoding="utf-8"))
+    man = json.loads((P.EP01_VO / "_清单.json").read_text(encoding="utf-8"))
     # 入点收敛：旁白不能越过本镜（否则字幕压在下一个场景上）
     for m in man:
         k = m["id"][:3]
@@ -164,7 +167,7 @@ def mix(src):
     fc.append("[0:a]%s,volume=1.0[h3]" % FMT)
     tags.append("[h3]")
     for m in man:
-        f = VOICE / m["file"]
+        f = P.EP01_VO / m["file"]
         if not f.exists():
             print("   缺旁白", f.name); continue
         n += 1; ins.append(str(f))
@@ -318,7 +321,7 @@ def burn(src):
     if not ass.exists():
         off, _ = timeline(); build_ass(off)
     total = duration(src) + HEAD_BLACK + TAIL_BLACK
-    out = VID / "_成片_ep01_1080x1920_字幕.mp4"
+    out = P.EP01_FINAL / "_成片_ep01_1080x1920_字幕.mp4"
     # 顺序很重要：先烧字幕（时间轴=原始），再用 tpad 加黑场（字幕已烘进帧，不会错位）
     fc = ("[0:v]scale=1080:1920:flags=lanczos,setsar=1,"
           "subtitles=%s,"

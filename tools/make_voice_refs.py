@@ -8,18 +8,21 @@
 
 时间点来自 tools/gen_ep01_h3.py 提示词里写死的动作时间轴（不是猜的）。
 
-输出：releases/2026-09-12_ep01配音/_参考音色/
+输出：releases/2026-09-12_ep01_成片包/04_配音与音效/_参考音色/
   ref_陆远.wav   （H3 里陆远几句独白拼成，约 7 秒）
   ref_老头.wav   （H3 里老头两句拼成，约 5 秒）
   ref_年轻人.wav （备用）
 """
 import subprocess
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 
 FFMPEG = r"C:\Users\oo\anaconda3\envs\indextts\Library\bin\ffmpeg.exe"
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
-VID = ROOT / "releases" / "2026-09-12_ep01视频"
-OUT = ROOT / "releases" / "2026-09-12_ep01配音" / "_参考音色"
+VID = P.EP01_VIDEOS
+OUT = P.EP01_REF
 TMP = OUT / "_tmp"
 
 # 角色 → [(镜号, 起, 止, 说明)]  时间轴源自 H3 提示词 beats

@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 """ep01 分镜场景一致性检查（客观色彩指标）
 按 visual-spec-lock 判定：暖调（R>B）、不灰（饱和度）、明度适中
-输出: releases/2026-09-12_ep01分镜图/_一致性报告.txt
+输出: releases/2026-09-12_ep01_成片包/05_质检/_一致性报告.txt
 """
 import os
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 from PIL import Image, ImageStat
 
-SRC = Path(r"C:\Users\oo\WorkBuddy\小说未来ai\releases\2026-09-12_ep01分镜图")
+SRC = P.EP01_FRAMES
 
 # (文件, 镜号, 场次光色标签)
 SHOTS = [
@@ -54,7 +57,7 @@ def metrics(p):
 
 rows = []
 for fn, sid, light in SHOTS:
-    p = SRC / fn
+    p = P.frame_path(fn)
     if not p.exists():
         rows.append((sid, light, fn, None)); continue
     rows.append((sid, light, fn, metrics(p)))
@@ -113,7 +116,7 @@ if issues:
 else:
     lines.append("  无")
 
-out = SRC / "_一致性报告.txt"
+out = P.EP01_QA_REPORT
 out.write_text("\n".join(lines), encoding="utf-8")
 print("\n".join(lines))
 print()

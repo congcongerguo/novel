@@ -11,11 +11,14 @@
 ⚠️ 用 IndexTTS 自己的 venv 跑（不是宿主 python）：
   C:\\Users\\oo\\WorkBuddy\\Claw\\index-tts-windows\\.venv\\Scripts\\python.exe tools\\tts_vo.py
 
-输出：releases/2026-09-12_ep01配音/<镜号>_<角色>_<用途>.wav（24kHz 单声道）
+输出：releases/2026-09-12_ep01_成片包/04_配音与音效/<镜号>_<角色>_<用途>.wav（24kHz 单声道）
 另出 `_清单.json` 记录每句的时长与计划入点，供混音脚本读取。
 """
 import json, sys, time, os
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 
 # IndexTTS 是"本地包"（没装进 venv），必须把自己目录加进 sys.path，
 # 且模型内部用相对路径（./checkpoints/hf_cache），所以 cwd 也要切过去。
@@ -26,8 +29,8 @@ os.chdir(ITT)
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
 MODEL_DIR = r"C:\Users\oo\WorkBuddy\Claw\index-tts-windows\checkpoints"
 CFG = r"C:\Users\oo\WorkBuddy\Claw\index-tts-windows\checkpoints\config.yaml"
-REF_DIR = ROOT / "releases" / "2026-09-12_ep01配音" / "_参考音色"
-OUT_DIR = ROOT / "releases" / "2026-09-12_ep01配音"
+REF_DIR = P.EP01_REF
+OUT_DIR = P.EP01_VO            # 旁白/画外音 wav（与 assemble_ep01.py 读取位置一致）
 
 # 台词：id / 角色 / 用途 / 文本（TTS 用，数字写中文）/ 计划入点（秒，相对该镜）
 # 文本与入点依据 spec/visual/ep01-配音剪辑台本.md + tools/gen_ep01_h3.py 的动作时间轴

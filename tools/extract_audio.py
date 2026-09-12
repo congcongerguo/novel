@@ -5,20 +5,23 @@
 逐个点开视频太慢 —— 抽成音频后可以连着听一遍。
 
 用法：
-  python extract_audio.py                      # 抽 releases/2026-09-12_ep01视频/ 全部
+  python extract_audio.py                      # 抽 releases/2026-09-12_ep01_成片包/03_镜头视频/ 全部
   python extract_audio.py s01 s04 s07          # 指定镜号
   python extract_audio.py --cmp                # 同时抽「废弃v1」作对照（v1_xxx.mp3）
 
-输出：releases/2026-09-12_ep01视频/_音频验收/<镜号>.mp3
+输出：releases/2026-09-12_ep01_成片包/03_镜头视频/_音频验收/<镜号>.mp3
       加 --cmp 时同一目录下多出 v1_<镜号>.mp3
 """
 import subprocess, sys
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
-VID_DIR = ROOT / "releases" / "2026-09-12_ep01视频"
-V1_DIR = ROOT / "releases" / "2026-09-12_ep01视频_废弃v1"
-OUT_DIR = VID_DIR / "_音频验收"
+VID_DIR = P.EP01_VIDEOS
+V1_DIR = P.EP01_HIST_V1
+OUT_DIR = P.EP01_QA_AUDIO
 
 # ffmpeg 不在 PATH，用 indextts 环境里那个（2026-09-12 探明）
 FFMPEG = Path(r"C:\Users\oo\anaconda3\envs\indextts\Library\bin\ffmpeg.exe")

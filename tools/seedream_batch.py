@@ -3,7 +3,7 @@
 用法:
   python seedream_batch.py s01 s02 s03 ...      # 指定镜号
   python seedream_batch.py all                  # 全部
-输出: releases/2026-09-12_ep01分镜图/<镜号>_<名>.png
+输出: releases/2026-09-12_ep01_成片包/02_分镜首帧/<镜号>_<名>.png
 """
 import base64
 import json
@@ -14,11 +14,14 @@ import time
 import urllib.error
 import urllib.request
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 
 API_URL = "https://ark.cn-beijing.volces.com/api/v3/images/generations"
 MODEL = "doubao-seedream-5-0-pro-260628"
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
-OUTDIR = ROOT / "releases" / "2026-09-12_ep01分镜图"
+OUTDIR = P.EP01_FRAMES
 LUYUAN = ROOT / "input" / "juese" / "luyuan" / "luyuan.png"
 LUYUAN_FRONT = ROOT / "input" / "juese" / "luyuan" / "三视图" / "front.png"
 SIZE = "1152x2048"          # 9:16 竖屏（Pro 允许 921,600–4,624,220 总像素）
@@ -55,7 +58,7 @@ AXIS_WINDOW = ("**四分之三侧后角度**：他侧身站在配给点窗口前
                "he never faces the lens, screen light hitting his face from the side")
 
 # ── 锚点图（P0 一致性：场景/道具必须作为 image 参考传入，不能只写文字）──
-ADIR = ROOT / "releases" / "2026-09-12_ep01分镜图"
+ADIR = P.EP01_FRAMES
 A1 = ADIR / "A1_废品收购站场景.png"
 A2 = ADIR / "A2_锈迹斑斑的旧设备.png"
 A3 = ADIR / "A3_充电头怼三孔圆口.png"

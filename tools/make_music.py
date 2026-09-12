@@ -15,15 +15,18 @@
   ⛔ 112.5 – 123.3 = s14「无所事事」**硬静默**（宪法：缓冲段不给音乐）
 
 用法：python tools/make_music.py
-产物：releases/2026-09-12_ep01配音/_底乐/ep01_底乐.wav
+产物：releases/2026-09-12_ep01_成片包/04_配音与音效/_底乐/ep01_底乐.wav
 """
 import numpy as np
 import wave
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 
 SR = 22050
 DUR = 230.5
-OUT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai\releases\2026-09-12_ep01配音\_底乐")
+OUT = P.EP01_MUSIC
 rng = np.random.default_rng(1937)
 
 N = int(DUR * SR)

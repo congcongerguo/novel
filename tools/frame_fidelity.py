@@ -10,18 +10,21 @@
   结构相似度  灰度降采样后的皮尔逊相关（-1..1）—— > 0.60 视为构图同源
 
 用法：
-  python frame_fidelity.py                 # 检查 releases/2026-09-12_ep01视频/ 全部
+  python frame_fidelity.py                 # 检查 releases/2026-09-12_ep01_成片包/03_镜头视频/ 全部
   python frame_fidelity.py s01 s04 s07
   python frame_fidelity.py --cmp           # 同时比对「废弃v1」错误版
 """
 import sys, subprocess, math
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 from PIL import Image, ImageStat
 
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
-VID_DIR = ROOT / "releases" / "2026-09-12_ep01视频"
-V1_DIR = ROOT / "releases" / "2026-09-12_ep01视频_废弃v1"
-FRAME_DIR = ROOT / "releases" / "2026-09-12_ep01分镜图"
+VID_DIR = P.EP01_VIDEOS
+V1_DIR = P.EP01_HIST_V1
+FRAME_DIR = P.EP01_FRAMES
 TMP = ROOT / ".workbuddy" / "tmp" / "frame_chk"
 
 FFMPEG = Path(r"C:\Users\oo\anaconda3\envs\indextts\Library\bin\ffmpeg.exe")
@@ -108,7 +111,7 @@ def metrics(a: Path, b: Path):
 
 def check(mp4: Path, tag=""):
     shot = mp4.stem.split("_")[0]
-    src = FRAME_DIR / FRAME_FILE.get(shot, "")
+    src = P.frame_path(FRAME_FILE.get(shot, ""))
     if not src.exists():
         print("%-24s 找不到对应首帧，跳过" % mp4.name); return
     f0 = first_frame(mp4, tag or "v2")

@@ -1,0 +1,223 @@
+{
+  "ep": "ep06",
+  "title": "数字守灵",
+  "comment": "源: chapters/ep06.md · 李叔走了/灵堂屏幕/女儿儿子争论/赵满秋开口/废机房服务器/城西 共18镜 · 总时长约169秒 · 种子基 2026096001",
+  "shots": [
+    {
+      "id": "s01",
+      "name": "李叔走了",
+      "frames": 294,
+      "seed": 2026096001,
+      "frame_src": null,
+      "refs": [
+        "zhaomanqiu"
+      ],
+      "frame_prompt": "medium shot inside a warm tungsten junk shop, {zhaomanqiu} behind the counter speaking to {luyuan} who listens, a cloth in her hand, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the Chinese woman in her mid-forties defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): graying dark hair tied back, weathered but kind face, dark work shirt with rolled sleeves, heavy canvas work apron with leather straps, a screwdriver in the apron pocket.\n<Subject 2> is the 32-year-old Chinese man defined by <Picture 1> and the scene: old black-frame glasses, faded plaid shirt, listening.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> talking across the counter to <Subject 2>.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> tells <Subject 2> that an old acquaintance, Uncle Li, has passed; before he died he sent word for her to tell her own father he is going first. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, tied-back hair, apron and screwdriver are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm tungsten key light, shallow depth of field, dust in the lamp beam; the counter low in the tall frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:11.0, <Subject 1> speaks evenly, <d>[Chinese] 李叔是我爸的老同事，当年管机房的一批人，就剩他还活着。他走之前，让人捎话给我——'跟你爸说一声，我先走一步。'</d> From 00:11.2 to 00:12.2, she pauses, the cloth still in her hand. No other dialogue.\n\noverall_soundscape: lamp hum; cloth on wood; distant alley hum.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s02",
+      "name": "不信的人",
+      "frames": 294,
+      "seed": 2026096002,
+      "frame_src": null,
+      "refs": [
+        "zhaomanqiu"
+      ],
+      "frame_prompt": "medium shot inside the warm tungsten shop, {luyuan} frowning at {zhaomanqiu} across the counter, she wiping without looking up, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the Chinese woman in her mid-forties defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): graying hair tied back, canvas apron, wiping.\n<Subject 2> is the 32-year-old Chinese man defined by <Picture 1> and the scene: old black-frame glasses, faded plaid shirt, frowning.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 2> frowning at <Subject 1> across the counter.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 2> notes her father is already gone; <Subject 1> says Li knew she would not believe it, so the message was for her to know he remembered, and tells her to come burn paper for him. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, tied-back hair and apron are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his glasses and frown are retained from <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm tungsten key light, shallow depth of field; the counter low in the frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:03.5, <Subject 2> asks, <d>[Chinese] 你爸……不是已经不在了吗？</d> From 00:03.7 to 00:05.2, <Subject 1> says, <d>[Chinese] 他是知道我不信。</d> From 00:05.4 to 00:11.5, <Subject 1> says, <d>[Chinese] 所以他说，'跟你爸说一声'，不是让我去说，是让我知道他记着。</d> From 00:11.5 to 00:12.2, she turns back to the shelf. No other dialogue.\n\noverall_soundscape: lamp hum; cloth on wood; distant alley hum.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s03",
+      "name": "烧纸烧成电的",
+      "frames": 158,
+      "seed": 2026096003,
+      "frame_src": null,
+      "refs": [
+        "zhaomanqiu"
+      ],
+      "frame_prompt": "medium shot, {zhaomanqiu} setting down the cloth and moving to the doorway where {luyuan} waits, warm tungsten light, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the Chinese woman in her mid-forties defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): graying hair tied back, canvas apron, moving to the door.\n<Subject 2> is the 32-year-old Chinese man defined by <Picture 1> and the scene: old black-frame glasses, faded plaid shirt, waiting at the door.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> moving toward the doorway where <Subject 2> stands.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> tells <Subject 2> to come burn paper for Uncle Li, noting even that is electric now, and they head out. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, tied-back hair and apron are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm tungsten key light, shallow depth of field; the doorway tall in the frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:06.5, <Subject 1> says, <d>[Chinese] 去吧，陪我去烧个纸。如今这世道，烧纸都烧成电的了。</d> From 00:06.7 to 00:07.3, they move toward the door, the lamp light warm on their backs. No other dialogue.\n\noverall_soundscape: lamp hum; her step on the floor; the cloth set down.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s04",
+      "name": "灵堂屏幕",
+      "frames": 175,
+      "seed": 2026096004,
+      "frame_src": null,
+      "refs": [
+        "lishu"
+      ],
+      "frame_prompt": "vertical interior shot of a small mortuary room, a standing screen in the center showing {lishu} seated on a sofa, slightly hunched, the screen glow lighting the dim warm room, the room walls receding upward, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the model of the 75-year-old thin Chinese man defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view), rendered on the screen: white hair, deep wrinkles, grey zip-up work jacket, seated slightly hunched on a sofa.\n<Subject 2> is the mortuary room in <Picture 1>: a standing screen at center glowing, dim warm walls, a few folding chairs.\n<Picture 1> is the first frame of [Shot 1]: a vertical interior shot of <Subject 1> on the center screen.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: the camera holds on <Subject 1> seated motionless on the screen in <Subject 2>, the screen glow the only lit thing, his face clearly readable in the warm light, no crushed black. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1], on screen): fully_preserved - his white hair, wrinkles and grey jacket are retained from <Picture 2> and <Picture 3> as rendered on the screen.\n<Subject 2> (appears in [Shot 1]): fully_preserved - the screen glow and the dim warm walls are retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot of a dim but warm-lit interior, the screen as the key light source casting warm glow on nearby surfaces, no crushed black areas; the room stacks upward.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:04.0, <Subject 1> sits on the screen, the sofa edge and his grey jacket clearly lit by the panel's glow. From 00:04.0 to 00:07.3, the glow holds steady, faint warm light catching the wall behind and a folding chair; his face stays readable. No dialogue.\n\noverall_soundscape: a low air-conditioner hum; the faint electrical whine of the screen; soft room tone.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s05",
+      "name": "女儿絮叨",
+      "frames": 277,
+      "seed": 2026096005,
+      "frame_src": null,
+      "refs": [
+        "lishu"
+      ],
+      "frame_prompt": "medium shot inside the mortuary room, a middle-aged woman sitting before the center screen talking to {lishu} on it, his image replying, warm screen glow on her face, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the model of the 75-year-old man on the screen in <Picture 1>: grey jacket, seated, answering.\n<Subject 2> is a one-time middle-aged woman in <Picture 1>: seated before the screen, talking to it, eyes reddening.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 2> before the screen where <Subject 1> sits.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 2> tells <Subject 1> on the screen she bought his medicine and asks if he remembers; <Subject 1> answers, asks about her mother, and says he is coming home for ribs. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1], on screen): partially_preserved - his grey jacket and seated posture are retained from <Picture 1> as rendered; face stays within the screen.\n<Subject 2> (appears in [Shot 1]): fully_preserved - her seated figure and reddening eyes are retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with the screen as warm key light on <Subject 2>'s face, shallow depth of field; the screen sits in the upper part of the tall frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:04.5, <Subject 2> says, <d>[Chinese] 爸，你上周让我买的药，我买了，放在柜子第二层了。你记得吃。</d> From 00:04.7 to 00:06.5, <Subject 1> on screen answers, <d>[Chinese] 哎，知道了。你妈呢？</d> From 00:06.7 to 00:09.5, <Subject 2> says, <d>[Chinese] 妈在厨房。她问你晚上回不回来吃饭。</d> From 00:09.5 to 00:11.5, <Subject 1> on screen moves his lips to answer, the glow warm on <Subject 2>'s cheek. No other dialogue.\n\noverall_soundscape: the screen's soft speaker voice; the air-conditioner hum; her breath.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s06",
+      "name": "留着排骨",
+      "frames": 141,
+      "seed": 2026096006,
+      "frame_src": null,
+      "refs": [
+        "lishu"
+      ],
+      "frame_prompt": "close shot of the screen showing {lishu} smiling and saying he is coming home, the middle-aged woman's face in the foreground tearing up, warm screen glow, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the model of the 75-year-old man on the screen in <Picture 1>: grey jacket, smiling, seated.\n<Subject 2> is the one-time middle-aged woman in <Picture 1>: in the foreground, tearing up.\n<Picture 1> is the first frame of [Shot 1]: a close shot of <Subject 1> on the screen with <Subject 2> in front.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> on screen says he is coming home and to keep ribs for him; <Subject 2> in front smiles then her eyes redden. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1], on screen): partially_preserved - his grey jacket and smile are retained from <Picture 1> as rendered.\n<Subject 2> (appears in [Shot 1], foreground): fully_preserved - her face and reddening eyes are retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 close shot with warm screen glow, shallow depth of field; the screen fills the upper frame, <Subject 2>'s face low.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:03.5, <Subject 1> on screen says, <d>[Chinese] 回，怎么不回。</d> a beat, then <d>[Chinese] 让她给我留着排骨。</d> From 00:03.7 to 00:06.6, <Subject 2> in front smiles, then her eyes redden and she lowers her gaze. No other dialogue.\n\noverall_soundscape: the screen's soft speaker voice; the air-conditioner hum.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s07",
+      "name": "读屏幕",
+      "frames": 175,
+      "seed": 2026096007,
+      "frame_src": null,
+      "refs": [
+        "luyuan"
+      ],
+      "frame_prompt": "medium shot from inside the doorway, {luyuan} standing at the threshold not entering, looking at the center screen across the dim room, warm screen glow, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the 32-year-old Chinese man defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): old black-frame glasses, faded plaid shirt, at the doorway.\n<Subject 2> is the screen with the model of the old man in <Picture 1>: glowing, seated, across the dim room.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> at the threshold looking at <Subject 2>.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> stands at the door and does not enter; he reads the running model on <Subject 2>, its parameters, tone library and daily-reply tree, all trained from the talk recorded of Uncle Li, a machine that never tires. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - the glowing screen with the seated model is retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot of a dim warm room, screen glow as key light, no crushed black; the doorway tall in the frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:03.5, <Subject 1> stands at the threshold, eyes fixed on the screen across the room. From 00:03.5 to 00:07.3, he reads it silently, his expression flat; the screen glow lights the near wall and a chair, every detail readable. No dialogue.\n\noverall_soundscape: air-conditioner hum; faint screen whine; distant daughter's muffled voice from the other shot.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s08",
+      "name": "没有气味",
+      "frames": 124,
+      "seed": 2026096008,
+      "frame_src": null,
+      "refs": [
+        "lishu"
+      ],
+      "frame_prompt": "close shot of the mortuary room air near the screen, an air-conditioner vent blowing, no smoke, {lishu} glowing on screen, warm practical light, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the model of the old man on the screen in <Picture 1>: glowing, seated, unchanged.\n<Subject 2> is the room air and vent in <Picture 1>: an air-conditioner pushing moving air, no smoke.\n<Picture 1> is the first frame of [Shot 1]: a close shot of the air near the screen where <Subject 1> glows.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: the room carries no scent of the tobacco and camphor of Uncle Li, only the air-conditioner's moving air; the model copies his voice but not the smell. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1], on screen): partially_preserved - his grey jacket is retained from <Picture 1> as rendered; face stays within the screen.\n<Subject 2> (appears in [Shot 1]): fully_preserved - the vent and the moving air ribbon are retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot of a dim warm room, screen glow and a small warm practical light, no crushed black; the vent and the screen stack in the tall frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:04.0, the air-conditioner vent pushes a slow ribbon of air across the frame, no smoke, no scent. From 00:04.0 to 00:05.9, the screen glow holds; <Subject 1> sits unchanged, his jacket edge lit. No dialogue.\n\noverall_soundscape: the steady mechanical breath of the air-conditioner; faint screen whine.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s09",
+      "name": "概率分布",
+      "frames": 124,
+      "seed": 2026096009,
+      "frame_src": null,
+      "refs": [
+        "luyuan"
+      ],
+      "frame_prompt": "medium shot of {luyuan} at the doorway staring at the screen, the old man's model seated within it, warm screen glow on Luyuan's glasses, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the 32-year-old Chinese man defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): old black-frame glasses, faded plaid shirt, at the doorway.\n<Subject 2> is the screen with the model of the old man in <Picture 1>: glowing, seated.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> staring at <Subject 2>.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> realizes the screen is not Uncle Li but a probability distribution of him, collected, trained, deployed, a Li who is always three in the afternoon, never asking why his daughter did not visit. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - the glowing screen with the seated model is retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot of a dim warm room, screen glow on his glasses, no crushed black.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:03.5, <Subject 1> keeps staring at the screen, the glow filling half his lens. From 00:03.5 to 00:05.9, he lets out a slow breath, still not entering. No dialogue.\n\noverall_soundscape: air-conditioner hum; distant daughter's voice; soft room tone.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s10",
+      "name": "这不是爸",
+      "frames": 311,
+      "seed": 2026096010,
+      "frame_src": null,
+      "refs": [
+        "luyuan"
+      ],
+      "frame_prompt": "medium shot in the mortuary room, {luyuan} standing off to the side watching while a man in his forties frowns and a middle-aged woman sits before the screen, the old man's model glowing between them, warm screen glow, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is a one-time man in his forties in <Picture 1>: frowning, standing.\n<Subject 2> is a one-time middle-aged woman in <Picture 1>: seated, facing the screen.\n<Subject 3> is the screen with the model of the old man in <Picture 1>: glowing, seated.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> frowning at <Subject 2> and the screen.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> says this is wrong, it is not their father; <Subject 2> says his words are identical; <Subject 1> insists it is a model and they are talking to a machine. <Picture 2> and <Picture 3> define no recurring identity here.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - his frown and standing posture are retained exactly as in <Picture 1>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - her seated figure is retained exactly as in <Picture 1>.\n<Subject 3> (appears in [Shot 1], on screen): partially_preserved - the glowing screen with the seated model is retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm screen glow as key light, shallow depth of field; the screen sits in the upper frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:03.0, <Subject 1> says, <d>[Chinese] 妈，姐……这不行。这不是爸。</d> From 00:03.2 to 00:05.5, <Subject 2> says, <d>[Chinese] 怎么不是？</d> then <d>[Chinese] 他说的话，跟爸一模一样。</d> From 00:05.7 to 00:11.5, <Subject 1> says, <d>[Chinese] 那是模型！</d> then <d>[Chinese] 爸已经死了！我们这是在……这是在对着一个机器说话！</d> From 00:11.5 to 00:13.0, <Subject 2> turns back to the screen, jaw set. No other dialogue.\n\noverall_soundscape: the screen's soft speaker voice behind; the air-conditioner hum; his breath.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s11",
+      "name": "他就在这儿",
+      "frames": 311,
+      "seed": 2026096011,
+      "frame_src": null,
+      "refs": [
+        "luyuan"
+      ],
+      "frame_prompt": "medium shot, {luyuan} at the edge of frame watching while the middle-aged woman stands facing her brother, the old man's model glowing on the screen behind, warm screen glow, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the one-time middle-aged woman in <Picture 1>: standing, facing her brother.\n<Subject 2> is the one-time man in his forties in <Picture 1>: frowning, facing her.\n<Subject 3> is the screen with the model of the old man in <Picture 1>: glowing behind them.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> facing <Subject 2> with the screen behind.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> demands where their father is if not here; <Subject 2> says this is imprisoning him; <Subject 1> says talking to him each day keeps him from being dead. <Picture 2> and <Picture 3> define no recurring identity here.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her standing figure is retained exactly as in <Picture 1>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his frown is retained exactly as in <Picture 1>.\n<Subject 3> (appears in [Shot 1], on screen): partially_preserved - the glowing screen is retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm screen glow behind, shallow depth of field.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:05.0, <Subject 1> says, <d>[Chinese] 机器？</d> then <d>[Chinese] 那你去把爸的墓挖出来跟他说话？他去哪儿了？他就在这儿！</d> From 00:05.2 to 00:06.5, <Subject 2> says, <d>[Chinese] 这是在囚禁他！</d> From 00:06.7 to 00:12.0, <Subject 1> says, <d>[Chinese] 囚禁？</d> then <d>[Chinese] 我每天跟他说说话，他就不会死！你懂什么！</d> From 00:12.0 to 00:12.2, she breathes hard. No other dialogue.\n\noverall_soundscape: the screen's soft voice behind; the air-conditioner hum.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s12",
+      "name": "电费谁交",
+      "frames": 294,
+      "seed": 2026096012,
+      "frame_src": null,
+      "refs": [
+        "luyuan"
+      ],
+      "frame_prompt": "medium shot, {luyuan} beside them watching while the son has his back to the screen, shoulders shaking, the middle-aged woman seated again, the old man's model glowing, warm screen glow, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the one-time man in his forties in <Picture 1>: back to the screen, shoulders shaking.\n<Subject 2> is the one-time middle-aged woman in <Picture 1>: seated again, head down.\n<Subject 3> is the screen with the model of the old man in <Picture 1>: glowing.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> with his back to <Subject 3>, <Subject 2> seated.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> stands with his back to the screen, shoulders shaking, and asks who pays the server quota each month; <Subject 2> says she does, working two jobs; he asks if that is just to have a machine keep him company, and she says at least he is there. <Picture 2> and <Picture 3> define no recurring identity here.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1], back to screen): partially_preserved - his back and shaking shoulders are retained exactly as in <Picture 1>; face stays off-frame.\n<Subject 2> (appears in [Shot 1]): fully_preserved - her seated figure is retained exactly as in <Picture 1>.\n<Subject 3> (appears in [Shot 1], on screen): partially_preserved - the glowing screen is retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm screen glow, shallow depth of field; the screen upper frame, the figures low.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:04.0, <Subject 1> with back to screen, shoulders shaking, says, <d>[Chinese] 那……那电费呢？模型服务器每个月的配额，谁交？</d> From 00:04.2 to 00:06.0, <Subject 2> quietly says, <d>[Chinese] 我交。我打两份工。</d> From 00:06.2 to 00:09.5, <Subject 1> turns his head, <d>[Chinese] 你打两份工，就是为了让一个机器替爸陪你？</d> From 00:09.7 to 00:12.0, <Subject 2> says, <d>[Chinese] ……至少他在。</d> From 00:12.0 to 00:12.2, silence holds. No other dialogue.\n\noverall_soundscape: his shaken breath; the air-conditioner hum; the screen's faint whine.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s13",
+      "name": "我爸连这个都没有",
+      "frames": 345,
+      "seed": 2026096013,
+      "frame_src": null,
+      "refs": [
+        "zhaomanqiu"
+      ],
+      "frame_prompt": "medium shot in the dim room, {zhaomanqiu} standing beside {luyuan} looking at the screen, her face lit by the warm glow, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the Chinese woman in her mid-forties defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): graying hair tied back, canvas apron, looking at the screen.\n<Subject 2> is the 32-year-old Chinese man defined by <Picture 1> and the scene: old black-frame glasses, faded plaid shirt, beside her.\n<Subject 3> is the screen with the model of the old man in <Picture 1>: glowing.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> beside <Subject 2>, looking at <Subject 3>.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> speaks to the screen, saying Uncle Li told her to tell her father, but her own father had nothing like this; she says hers died in a scrapped machine room, logged as 'died on duty', no model, no vigil, not even a photo, then turns to leave. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, tied-back hair and apron are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 1>.\n<Subject 3> (appears in [Shot 1], on screen): partially_preserved - the glowing screen is retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm screen glow on <Subject 1>'s face, shallow depth of field; the screen upper frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:03.5, <Subject 1> to the screen, <d>[Chinese] 老李啊，你说'跟你爸说一声'……我爸他，连这个都没有。</d> From 00:03.7 to 00:11.5, <Subject 1> steady voice, <d>[Chinese] 我爸死在废机房里，档案上写'因公殉职'，四个字。没有模型，没有守灵，连张照片都……算了，走吧。</d> From 00:11.5 to 00:12.2, she turns toward the door. No other dialogue.\n\noverall_soundscape: the screen's soft voice behind; the air-conditioner hum; her calm breath.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s14",
+      "name": "李叔命好",
+      "frames": 158,
+      "seed": 2026096014,
+      "frame_src": null,
+      "refs": [
+        "zhaomanqiu"
+      ],
+      "frame_prompt": "medium shot, {zhaomanqiu} at the doorway turning back to look at the screen with the old man's model, warm screen glow, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the Chinese woman in her mid-forties defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): graying hair tied back, canvas apron, at the door.\n<Subject 2> is the screen with the model of the old man in <Picture 1>: glowing.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> at the door looking back at <Subject 2>.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: at the door <Subject 1> pauses and looks back at the screen, saying Uncle Li was luckier than her father, someone remembered him. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, tied-back hair and apron are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1], on screen): partially_preserved - the glowing screen is retained exactly as in <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm screen glow, shallow depth of field; the doorway tall in the frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:04.0, <Subject 1> at the door, looking back, says, <d>[Chinese] 李叔，你比我爸命好。有人记得你。</d> From 00:04.0 to 00:06.6, she steps out, the glow fading on her back. No other dialogue.\n\noverall_soundscape: the screen's faint whine; her step on the floor; the air-conditioner hum.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s15",
+      "name": "废机房服务器",
+      "frames": 311,
+      "seed": 2026096015,
+      "frame_src": null,
+      "refs": [
+        "zhaomanqiu"
+      ],
+      "frame_prompt": "vertical shot on a path outside the mortuary at dusk, {zhaomanqiu} walking ahead, {luyuan} behind, the building receding upward, warm orange dusk light, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the Chinese woman in her mid-forties defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): graying hair tied back, canvas apron, walking ahead.\n<Subject 2> is the 32-year-old Chinese man defined by <Picture 1> and the scene: old black-frame glasses, faded plaid shirt, behind her.\n<Picture 1> is the first frame of [Shot 1]: a vertical shot of <Subject 1> walking ahead with <Subject 2> behind.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: as they leave, <Subject 1> walking ahead asks what the scrapped machine-room server has been running all these years, and who it runs for; <Subject 2> says he does not know; she says if one day he hears it call 'Zhao Jianguo', not to tell her. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her back, tied-back hair and apron are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot at dusk with warm orange light and long shadow, shallow depth of field; the building recedes upward into depth.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:06.0, <Subject 1> ahead, not turning, says, <d>[Chinese] 你说，那台废机房里的服务器，要是真的一直在跑……它跑的是谁？</d> From 00:06.2 to 00:07.5, <Subject 2> behind says, <d>[Chinese] ……不知道。</d> From 00:07.7 to 00:12.5, <Subject 1> says, <d>[Chinese] 要是有天你听见它喊'赵建国'，你别告诉我。</d> From 00:12.5 to 00:13.0, she keeps walking. No other dialogue.\n\noverall_soundscape: their footsteps on the path; a low dusk wind; distant city hum.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s16",
+      "name": "该不该高兴",
+      "frames": 158,
+      "seed": 2026096016,
+      "frame_src": null,
+      "refs": [
+        "zhaomanqiu"
+      ],
+      "frame_prompt": "medium shot, {zhaomanqiu} glancing back at {luyuan} then quickening her pace, warm dusk light, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the Chinese woman in her mid-forties defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): graying hair tied back, canvas apron, glancing back.\n<Subject 2> is the 32-year-old Chinese man defined by <Picture 1> and the scene: old black-frame glasses, faded plaid shirt, behind.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> glancing back at <Subject 2>.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 2> asks why, and <Subject 1> says she would not know whether to be glad; then she walks faster away. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, tied-back hair and apron are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot with warm dusk light, shallow depth of field.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:01.8, <Subject 2> asks, <d>[Chinese] 为什么？</d> From 00:02.0 to 00:04.5, <Subject 1> without slowing says, <d>[Chinese] 因为我不知道我该不该高兴。</d> From 00:04.5 to 00:06.6, she quickens her pace and pulls ahead. No other dialogue.\n\noverall_soundscape: their quickening footsteps; a low dusk wind.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s17",
+      "name": "夜想",
+      "frames": 158,
+      "seed": 2026096017,
+      "frame_src": null,
+      "refs": [
+        "luyuan"
+      ],
+      "frame_prompt": "vertical night shot inside a cramped storeroom, {luyuan} lying among cartons under a single warm bulb, the bulb dim and steady, warm brown shadows, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the 32-year-old Chinese man defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): old black-frame glasses, faded plaid shirt, lying among cartons.\n<Subject 2> is the warm-lit storeroom in <Picture 1>: a single bulb, cartons stacked, warm brown shadows.\n<Picture 1> is the first frame of [Shot 1]: a vertical night shot of <Subject 1> lying still among the cartons.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> lies awake in the storeroom at night thinking, if a digital vigil truly keeps something, then an unattended machine room and a server running for over a decade, what is written in its logs. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - the warm bulb and the cartons are retained exactly as in <Picture 1>, shadows warm not crushed to black.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 night shot with a single warm tungsten bulb, warm brown shadows never crushed to black, dust in the light; cartons stack upward.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:04.0, <Subject 1> lies still among the cartons, eyes open to the dark ceiling. From 00:04.0 to 00:06.6, he turns slowly onto his side, the warm bulb steady above, shadows soft on the wall. No dialogue.\n\noverall_soundscape: the faint creak of cartons; distant night hum; the bulb's quiet electrical tone.\n\nnon_diegetic_music: N/A\n"
+    },
+    {
+      "id": "s18",
+      "name": "去城西",
+      "frames": 260,
+      "seed": 2026096018,
+      "frame_src": null,
+      "refs": [
+        "luyuan"
+      ],
+      "frame_prompt": "medium shot inside the warm tungsten shop, {luyuan} slinging a tool kit onto his back while {zhaomanqiu} wipes the counter without looking up, shallow depth of field",
+      "prompt": "subject_definitions:\n<Subject 1> is the 32-year-old Chinese man defined by <Picture 2> (character sheet) and <Picture 3> (full-body front view): old black-frame glasses, faded plaid shirt, slinging a tool kit.\n<Subject 2> is the Chinese woman in her mid-forties defined by <Picture 1> and the scene: graying hair tied back, canvas apron, wiping the counter.\n<Picture 1> is the first frame of [Shot 1]: a medium shot of <Subject 1> slinging the kit while <Subject 2> wipes.\n\nsummary:\n[keyframe completion + reference generation] The target video starts from <Picture 1> as its exact first frame: <Subject 1> says he is going to the west district to see the server; <Subject 2> asks what for, he says to see who it waits for; at the door she tells him to bring his screwdriver set in case it is broken and he can fix it. <Picture 2> and <Picture 3> define <Subject 1>'s identity and clothing only.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - his glasses and plaid shirt are retained from <Picture 2> and <Picture 3>.\n<Subject 2> (appears in [Shot 1]): fully_preserved - her face, tied-back hair and apron are retained from <Picture 1>.\n<Picture 1> ([Shot 1] first frame): fully_preserved - the video opens on this exact frame.\n\ndetailed_description:\nThe target video is a photorealistic documentary-style vertical 9:16 shot inside a warm tungsten shop, shallow depth of field, dust in the lamp light; the counter low in the frame.\n[Shot 1] The shot begins from <Picture 1>. From 00:00.5 to 00:02.0, <Subject 1> slinging the kit says, <d>[Chinese] 我去城西看看。</d> From 00:02.2 to 00:03.2, <Subject 2> without looking up says, <d>[Chinese] 看什么？</d> From 00:03.4 to 00:06.0, <Subject 1> says, <d>[Chinese] 去看看那台服务器，它到底在等谁。</d> From 00:06.2 to 00:08.0, he reaches the door. From 00:08.2 to 00:10.5, <Subject 2> says, <d>[Chinese] 带上你那套螺丝刀。要是它真坏了，你还能修。</d> From 00:10.5 to 00:10.8, he nods and steps out. No other dialogue.\n\noverall_soundscape: lamp hum; the kit strap settling; cloth on the counter.\n\nnon_diegetic_music: N/A\n"
+    }
+  ]
+}

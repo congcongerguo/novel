@@ -38,10 +38,13 @@ v1.0（错误版，已备份为 `_deprecated_gen_ep01_h3_错误版.py`）丢了 
   python gen_ep01_h3.py s01
   python gen_ep01_h3.py s04 s07        # 抽检
   python gen_ep01_h3.py all
-输出：releases/2026-09-12_ep01视频/<镜号>_<名>.mp4
+输出：releases/2026-09-12_ep01_成片包/03_镜头视频/<镜号>_<名>.mp4
 """
 import json, os, sys, time
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -57,8 +60,8 @@ _RETRY = Retry(total=6, backoff_factor=1.5,
 S.mount("http://", HTTPAdapter(max_retries=_RETRY, pool_connections=4, pool_maxsize=4))
 
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
-FRAME_DIR = ROOT / "releases" / "2026-09-12_ep01分镜图"
-OUT_DIR = ROOT / "releases" / "2026-09-12_ep01视频"
+FRAME_DIR = P.EP01_FRAMES
+OUT_DIR = P.EP01_VIDEOS
 CARD = ROOT / "input" / "juese" / "luyuan" / "luyuan.png"            # <Picture 2>
 FRONT = ROOT / "input" / "juese" / "luyuan" / "三视图" / "front.png"  # <Picture 3>
 
@@ -1213,7 +1216,7 @@ PENDING = []   # 下载失败待取回清单
 
 def gen(shot):
     s = SHOTS[shot]
-    src = FRAME_DIR / FRAME_FILE[shot]
+    src = P.frame_path(FRAME_FILE[shot])
     if not src.exists():
         print("[%s] 首帧缺失 %s" % (shot, s["frame"])); return
     out = OUT_DIR / ("%s_%s.mp4" % (shot, s["name"]))

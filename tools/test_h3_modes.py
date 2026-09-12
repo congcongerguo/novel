@@ -18,10 +18,13 @@
 用法：
   python test_h3_modes.py s04             # 默认测 s04（有对白，可验证中文语音）
   python test_h3_modes.py s01 i2v ref     # 指定镜号与配置
-输出：releases/2026-09-12_H3模式测试/<镜号>_<配置>.mp4
+输出：releases/2026-09-12_ep01_成片包/99_历史与废弃/H3模式测试/<镜号>_<配置>.mp4
 """
 import json, sys, time
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -33,8 +36,8 @@ S.mount("http://", HTTPAdapter(max_retries=Retry(
     allowed_methods=frozenset(["GET", "POST"])), pool_connections=4, pool_maxsize=4))
 
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
-FRAME_DIR = ROOT / "releases" / "2026-09-12_ep01分镜图"
-OUT_DIR = ROOT / "releases" / "2026-09-12_H3模式测试"
+FRAME_DIR = P.EP01_FRAMES
+OUT_DIR = P.EP01_HIST / "H3模式测试"
 CARD = ROOT / "input" / "juese" / "luyuan" / "luyuan.png"
 FRONT = ROOT / "input" / "juese" / "luyuan" / "三视图" / "front.png"
 
@@ -106,7 +109,7 @@ def run(shot, cfg):
     out = OUT_DIR / ("%s_%s.mp4" % (shot, cfg))
     if out.exists() and out.stat().st_size > 50_000:
         print("[%s/%s] 已存在跳过" % (shot, cfg)); return
-    first = upload(FRAME_DIR / FRAME_FILE[shot], "h3t_%s_first.png" % shot)
+    first = upload(P.frame_path(FRAME_FILE[shot]), "h3t_%s_first.png" % shot)
     wf = build(mode, prompt, first, 2026091290 + int(shot[1:]), "h3test/%s_%s" % (shot, cfg), s["frames"], with_refs)
 
     t0 = time.time()

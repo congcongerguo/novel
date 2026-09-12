@@ -4,7 +4,7 @@
 为什么自己合成：片子是"安静、没有未来"的调性，随手贴素材库音效会立刻不搭。
 这三个音都短、可精确控制，合成比找素材更准。
 
-产物：releases/2026-09-12_ep01配音/_音效/*.wav   （22050Hz 单声道，与 H3 音轨同规格）
+产物：releases/2026-09-12_ep01_成片包/04_配音与音效/_音效/*.wav   （22050Hz 单声道，与 H3 音轨同规格）
 
 三个音：
   sfx_machine   旧机器开机"嗡"——s16（继电器咔哒 + 低频嗡 + 拍频晃动 + 尾音）
@@ -16,9 +16,12 @@
 import numpy as np
 import wave
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 
 SR = 22050
-OUT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai\releases\2026-09-12_ep01配音\_音效")
+OUT = P.EP01_SFX
 rng = np.random.default_rng(20260912)
 
 

@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 """ep01 分镜联系表（contact sheet）—— 25 张拼一张，便于一次验收
-输出: releases/2026-09-12_ep01分镜图/_联系表_ep01_25镜.png
+输出: releases/2026-09-12_ep01_成片包/02_分镜首帧/_联系表_ep01_25镜.png
 """
 import os
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths as P
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(r"C:\Users\oo\WorkBuddy\小说未来ai")
-SRC = ROOT / "releases" / "2026-09-12_ep01分镜图"
+SRC = P.EP01_FRAMES
 
 # 按镜号顺序排列（文件名 -> 镜号标签）
 ORDER = [
@@ -57,7 +60,7 @@ if font is None:
 
 imgs = []
 for fn, label in ORDER:
-    p = SRC / fn
+    p = P.frame_path(fn)
     if not p.exists():
         print("MISSING", fn); continue
     im = Image.open(p).convert("RGB")
