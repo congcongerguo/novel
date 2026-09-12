@@ -604,10 +604,8 @@ SHOTS["s12"] = dict(
 )
 
 SHOTS["s13"] = dict(
-    name="废品收购站", frames=141,
+    name="废品收购站", frames=124,
     subjects=[
-        "<Subject 1> is the lean 30-year-old Chinese man defined by <Picture 2> and <Picture 3>: "
-        "a washed-out plaid shirt, old black-frame glasses; seen small, walking into frame.",
         "<Subject 2> is the scrap lot in <Picture 1>: heaps of stripped machine casings, flattened "
         "sheet metal, a half-dismantled refrigerator and a stack of unmarked monitors piled into a "
         "small hill under a plastic-sheet awning.",
@@ -615,24 +613,24 @@ SHOTS["s13"] = dict(
     first="a wide vertical shot of the scrap lot alley corner: heaps of stripped casings, sheet "
           "metal and unmarked monitors piled into a hill under a plastic-sheet awning, with the "
           "alley mouth bright at the top of frame.",
-    summary="the scrap lot of <Subject 2> sits still in the warm afternoon light with dust "
-            "drifting, while <Subject 1> walks slowly into the frame and stops, looking at the "
-            "pile for a moment before sitting down on the ground beside it.",
+    summary="an empty scrap-lot corner holds still in the warm afternoon light of <Subject 2>; "
+            "the yard is deserted and the shot stays on the pile - nothing but drifting dust, the "
+            "awning moving in the wind, and bare metal catching the light.",
     retention=[
-        "<Subject 1> (appears in [Shot 1]): fully_preserved - his build, plaid shirt and glasses "
-        "are retained from <Picture 2> and <Picture 3>.",
         "<Subject 2> (appears in [Shot 1]): fully_preserved - the pile of casings, sheet metal, "
         "the half-dismantled refrigerator and the plastic awning are retained exactly as in "
         "<Picture 1>.",
     ],
     camera=AXIS_JUNK,
     beats=[
-        "From 00:00.4 to 00:02.6, nothing moves in the pile but drifting dust and the plastic "
-        "awning lifting in the wind; bare metal edges catch the warm light.",
-        "From 00:02.6 to 00:04.6, <Subject 1> walks in from the left edge with his shadow across "
-        "the ground, stops two metres from the pile, and stands looking at it.",
-        "From 00:04.6 to 00:05.9, he lowers himself down and sits on the ground beside the pile, "
-        "back against the wall, and the frame holds on the yard with him small inside it.",
+        "From 00:00.3 to 00:02.1, dust drifts through the light and settles; the plastic awning "
+        "lifts once in the wind and falls back; one bare metal edge catches the warm light and "
+        "loses it.",
+        "From 00:02.1 to 00:03.6, the shaft of light through the torn awning shifts a little as "
+        "the sheet moves; a few loose flakes of rust turn over on the ground below it.",
+        "From 00:03.6 to 00:05.1, the yard goes still again and the handheld camera settles "
+        "almost imperceptibly; the pile keeps the light and the frame holds on it without cutting "
+        "anywhere.",
     ],
     close="No dialogue.",
     sound_text="A quiet yard of distant traffic and wind moving loose sheet metal; the plastic "
