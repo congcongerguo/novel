@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""ep01 分镜联系表（contact sheet）—— 25 张拼一张，便于一次验收
-输出: releases/2026-09-12_ep01_成片包/02_分镜首帧/_联系表_ep01_25镜.png
+"""ep01 分镜联系表（contact sheet）—— 26 张拼一张，便于一次验收
+输出: releases/2026-09-12_ep01_成片包/02_分镜首帧/_联系表_ep01_26镜.png
 """
 import os
 from pathlib import Path
@@ -36,6 +36,7 @@ ORDER = [
     ("s20_别往新城区说.png", "s20 别往新城区说"),
     ("s21_三种人吃东西.png", "s21 三种人"),
     ("s22_摸到兜里那个.png", "s22 摸到兜里那个"),
+    ("s22b_充电头在手心.png", "s22b 充电头在手心 ★新"),
     ("s23_插上电源口.png", "s23 插上电源口"),
     ("A4_手机屏幕2%.png", "s24 手机2%"),
     ("s25_他抬起头.png", "s25 他抬起头"),
@@ -84,6 +85,6 @@ for i, (im, label) in enumerate(imgs):
     canvas.paste(im, (x, y))
     d.text((x + 2, y + TH + 3), label, fill=FG, font=font)
 
-out = SRC / "_联系表_ep01_25镜.png"
+out = SRC / "_联系表_ep01_26镜.png"
 canvas.save(out, quality=92)
 print("SAVED", out, out.stat().st_size, "bytes", canvas.size, "imgs", len(imgs))

@@ -137,6 +137,7 @@ FRAME_FILE = {
     "s20": "s20_别往新城区说.png",
     "s21": "s21_三种人吃东西.png",
     "s22": "s22_摸到兜里那个.png",
+    "s22b": "s22b_充电头在手心.png",
     "s23": "s23_插上电源口.png",
     "s24": "A4_手机屏幕2%.png",
     "s25": "s25_他抬起头.png",
@@ -974,6 +975,41 @@ SHOTS["s22"] = dict(
                "ground; the distant steady hum from the lot behind him.",
 )
 
+SHOTS["s22b"] = dict(
+    name="充电头在手心", frames=124,
+    subjects=[
+        "<Subject 1> is the hand of the lean 30-year-old Chinese man defined by <Picture 2> and "
+        "<Picture 3>: rough skin with oil-grey under the short nails.",
+        "<Subject 2> is the old grey charger in <Picture 1>: a small grey plastic body with two "
+        "flat metal prongs and a short coil of black cable, lying in <Subject 1>'s open palm.",
+    ],
+    first="an extreme close-up at night: <Subject 1>'s open palm holding <Subject 2>, the grey "
+          "charger and its two flat prongs clearly lit, warm sodium light coming in from the side.",
+    summary="<Subject 1>'s hand holds <Subject 2> open in the warm night light and turns it over "
+            "once, as if checking that the thing is still there; then the hand goes still and the "
+            "shot stays on it.",
+    retention=[
+        "<Subject 1> (appears in [Shot 1], hand only): partially_preserved - the rough hand and "
+        "the oil-grey under the nails are retained from <Picture 2> and <Picture 3>.",
+        "<Subject 2> (appears in [Shot 1]): fully_preserved - the grey charger, its two flat prongs "
+        "and the short coil of cable are retained exactly as in <Picture 1>.",
+    ],
+    camera=("night in the scrap lot under the warm orange sodium lamp, the alley edges warm and "
+            "readable around him; the camera is an extreme close handheld frame on the palm and the "
+            "charger, breathing very slightly"),
+    beats=[
+        "From 00:00.3 to 00:02.0, the palm stays open and the charger lies still in it; the warm "
+        "light moves a little across the grey plastic and the two metal prongs.",
+        "From 00:02.0 to 00:03.6, his thumb turns the charger over once in the palm, the short coil "
+        "of cable swinging a little, and it comes to rest.",
+        "From 00:03.6 to 00:05.1, the hand goes still and holds the charger in the light; nothing "
+        "else moves and the shot stays on the palm.",
+    ],
+    close="No dialogue.",
+    sound_text="A very quiet night alley; the sodium lamp buzzing low; a faint breeze moving loose "
+               "sheet metal somewhere behind; the soft tick of the cable settling against his palm.",
+)
+
 SHOTS["s23"] = dict(
     name="插上电源", frames=209,
     subjects=[
@@ -1020,35 +1056,35 @@ SHOTS["s24"] = dict(
         "<Subject 1> is the hand and part of the face of the lean 30-year-old Chinese man defined "
         "by <Picture 2> and <Picture 3>: rough skin with oil-grey under the short nails, old "
         "black-frame glasses.",
-        "<Subject 2> is the small old phone in <Picture 1>, its screen just coming up with an old "
-        "interface of old lettering and old icons, a small battery figure at the top right reading "
-        "2%.",
+        "<Subject 2> is the small old phone in <Picture 1>, its screen just coming up with one "
+        "simple old charging screen: a battery icon with a lightning bolt inside it, and the figure "
+        "2% clearly set beside it - nothing else on the screen.",
     ],
     first="an extreme close-up in the dark: <Subject 1>'s hand holding <Subject 2> with its "
-          "screen just lit, the old interface and a small battery figure showing 2% at the top "
-          "right, the glow sitting on his glasses and cheekbone.",
-    summary="the screen of <Subject 2> comes up in the dark in <Subject 1>'s hand and stays lit "
-            "with the small battery figure showing 2%; he holds it steady and does not press "
-            "anything.",
+          "screen just lit, showing the battery icon with the lightning bolt and the figure 2%, "
+          "the glow sitting on his glasses and cheekbone.",
+    summary="the charging screen of <Subject 2> comes up in the dark in <Subject 1>'s hand and "
+            "stays lit with the battery icon, the bolt and the figure 2% plain to read; he holds "
+            "it steady and does not press anything.",
     retention=[
         "<Subject 1> (appears in [Shot 1], hand and half face): partially_preserved - the rough "
         "hand, the glasses and the lit half of his face are retained from <Picture 2>, <Picture 3> "
         "and <Picture 1>.",
-        "<Subject 2> (appears in [Shot 1]): fully_preserved - the old interface, the old lettering "
-        "and the battery figure reading 2% are retained exactly as in <Picture 1>.",
+        "<Subject 2> (appears in [Shot 1]): fully_preserved - the charging screen, the battery "
+        "icon with the bolt and the figure 2% are retained exactly as in <Picture 1>.",
     ],
     camera=("night, an extreme close-up with the phone screen standing as the brightest light in "
             "the frame; his face and glasses are clearly lit and readable and the shadows around "
             "them stay warm brown, never crushed to black"),
     beats=[
-        "From 00:00.3 to 00:02.6, the screen of <Subject 2> is already lit; the old interface "
-        "fills it and the small battery figure at the top right reads 2%; his thumb rests on the "
-        "edge of the casing without pressing.",
+        "From 00:00.3 to 00:02.6, the screen of <Subject 2> is already lit; the battery icon with "
+        "the bolt and the figure 2% stay plain on it; his thumb rests on the edge of the casing "
+        "without pressing.",
         "From 00:02.6 to 00:05.2, the light of the screen moves slightly as his hand settles, and "
         "it slides across the lenses of his glasses and down his cheekbone; nothing on the screen "
         "changes.",
-        "From 00:05.2 to 00:08.0, he goes on holding it perfectly still, the small figure still "
-        "reading 2% at the top right, and the frame does not move away from the lit screen and his "
+        "From 00:05.2 to 00:08.0, he goes on holding it perfectly still, the battery icon and the "
+        "figure 2% still showing, and the frame does not move away from the lit screen and his "
         "hand.",
     ],
     close="No dialogue.",
@@ -1222,7 +1258,12 @@ def gen(shot):
         print("[%s] 已存在，跳过" % shot); return
 
     first = upload(src, "h3_%s_first.png" % shot)
-    seed = 2026091200 + int(shot[1:])
+    # seed：纯数字镜号（s01…s25）保持原值不变；带字母后缀的镜（如 s22b）用备用算法
+    try:
+        seed = 2026091200 + int(shot[1:])
+    except ValueError:
+        _d = "".join(c for c in shot if c.isdigit())
+        seed = 2026091200 + int(_d) * 100 + 1
     wf = build(i2v_prompt(shot), first, seed, "h3/ep01v3_%s" % shot, s["frames"])
 
     t0 = time.time()

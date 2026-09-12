@@ -107,12 +107,14 @@ SHOTS = {
         "机身侧面下方有一个积满灰的两脚扁插电源口。机器屏幕上还亮着一片老旧的界面微光。"
         "午后侧光，浅景深。" + W)),
 
-    # ── 锚点 A4：2026 手机屏幕（2%）★集尾 ──
+    # ── 锚点 A4：2026 手机屏幕（充电中 · 2%）★集尾 ──
     "s24": ("A4_手机屏幕2%", LUYUAN, (
         LY_REF + "。极端特写：一只沾着油灰的手里握着一部老旧的手机，手机屏幕刚刚亮起，"
-        "屏幕上是 2026 年风格的旧界面（旧字体、旧图标），右上角显示「2%」的电量。"
+        "屏幕上是 2026 年旧系统的充电界面——正中央一个清晰的电池图标，电池里有一道正在充电的闪电符号，"
+        "电池旁边清楚地显示着电量数字「2%」，界面简单朴素，一眼就能看懂。"
         "手机屏幕是画面里最亮的光源，把他的半张脸、镜片反光和颧骨照得清清楚楚，皮肤纹理和眼镜细节都清晰可见。"
         "背景是夜里的暖橙色，路灯光从后面晕开。" + NIGHT_WARM + "画面安静、克制，他很明亮，一眼就能看清。竖构图。"
+        "crisp readable charging screen showing a battery icon with a lightning bolt and the number 2%, "
         "well-exposed close-up, brightest light source is the phone screen, face fully lit and clearly readable, "
         "crisp details, high clarity, bright and readable" + W)),
 
@@ -237,9 +239,21 @@ SHOTS = {
         LY_REF + "。中近景：他蹲在那台旧机器旁边（机器的外观、锈蚀与形态同 image 2），侧身对着镜头，微微低着头。"
         "他的一只手伸向机器侧面下方——那只手只看出一个轮廓，动作本身不在焦点上。"
         "画面焦点在他的脸：下方微弱的暖光刚刚亮起来，映亮他的下半张脸、眼镜下缘和下颌，"
-        "他的神情安静、专注，像在做一件很平常的事。" + NIGHT_WARM + "竖构图。"
-        "no visible socket, no visible plug, no mechanical detail, mechanism out of frame, "
-        "focus on his face and the soft glow rising from below" + W)),
+        "他的神情安静、专注，像在做一件很平常的事。机器的侧面在画面里是一块暗色的、"
+        "看得出锈蚀斑驳的模糊表面。" + NIGHT_WARM + "竖构图。"
+        "the focus stays on his face and the soft glow rising from below" + W)),
+
+    "s22b": ("s22b_充电头在手心", [LUYUAN], (
+        LY_REF + "。极端特写（夜景，暖调）：一只手指缝带油灰的手在胸前微微摊开，掌心里捏着"
+        "一个 2026 年款的老式充电头——灰白色塑料外壳、两个平行的扁平金属插脚、"
+        "连着一小段绕起来的黑色线。手很旧，指节有茧，手背有细小划痕，握得很轻，"
+        "像在确认一件东西还在不在。" + NIGHT_WARM +
+        "路灯的暖光从侧上方照下来，把他的手、充电头的塑料外壳和两个金属插脚都照得明亮清楚，"
+        "手指的纹理、指甲缝的油灰和插脚的反光都看得清；"
+        "整条巷子被路灯光照得明亮温暖，背景是虚化但依然有光的废品堆与暖橙色光晕。"
+        "焦点落在充电头和手指上，浅景深。画面明亮、安静、温暖、克制。竖构图。"
+        "bright readable close-up, the charger and the hand clearly lit" + W)),
+
 
     "s25": ("s25_他抬起头", [LUYUAN, A1, A2], (
         LY_REF + "。中近景：他蹲在那台旧机器前（机器同 image 3、场景同 image 2），机器屏幕刚刚又亮了一下，"

@@ -1,6 +1,6 @@
 # tools/ — 生产脚本（**唯一事实来源**）
 
-> 这些脚本是《注释》影视化流水线的全部工具。**25 镜的提示词、锚点常量、轴线规则都写在里面**，
+> 这些脚本是《注释》影视化流水线的全部工具。**全部镜的提示词、锚点常量、轴线规则都写在里面**，
 > 是核心创作资产，因此入库（`.workbuddy/scripts/` 已被清空，只留迁移说明——那里曾有两份不同步的副本，
 > 旧版 `gen_ep01_h3.py` 会产出"没锁首帧"的视频，极易误用）。
 
@@ -23,14 +23,14 @@ P.frame_path("A1_xxx.png")   # 首帧查找（会自动兼顾 _锚点/ 子目录
 ### 生图（Seedream 5.0 Pro · 云端付费）
 | 脚本 | 作用 | 用法 |
 |------|------|------|
-| `seedream_batch.py` | **ep01 首帧批量生成**｜内含全 25 镜提示词、锚点常量（A1–A4）、场景/轴线常量（`INST_WARM`/`NIGHT_WARM`/`AXIS_WINDOW`/`DUSK`）、多图参考 `REF_NOTE` | `python seedream_batch.py s01 s13` ／ `all` |
+| `seedream_batch.py` | **ep01 首帧批量生成**｜内含全部镜提示词（含补拍 s22b）、锚点常量（A1–A4）、场景/轴线常量（`INST_WARM`/`NIGHT_WARM`/`AXIS_WINDOW`/`DUSK`）、多图参考 `REF_NOTE` | `python seedream_batch.py s01 s13` ／ `all` |
 | `seedream_ref_gen.py` | 单张参考图生图（`image` 传 base64 参考） | `python seedream_ref_gen.py out.png ref.png --prompt "…"` |
 | `seedream_gen.py` | 纯文生图（最早跑通的版本，留档） | `python seedream_gen.py …` |
 
 ### 生视频（MiniMax H3 · 本地 ComfyUI）
 | 脚本 | 作用 | 用法 |
 |------|------|------|
-| `gen_ep01_h3.py` | **ep01 视频批量生成**｜全 25 镜 H3 结构化提示词 + 帧数表（124+17k）+ `<d>[Chinese]` 对白 + 轴线常量 | `python gen_ep01_h3.py s01` ／ `all` |
+| `gen_ep01_h3.py` | **ep01 视频批量生成**｜全 26 镜 H3 结构化提示词 + 帧数表（124+17k）+ `<d>[Chinese]` 对白 + 轴线常量 | `python gen_ep01_h3.py s01` ／ `all` |
 | `test_h3_modes.py` | 节点/模式 A/B 测试（验证"首帧锁定 vs 参考图"） | `python test_h3_modes.py s04 i2v i2v_ref` |
 | `frame_fidelity.py` | **首帧保真度自检**（抽视频第 0 帧 vs 首帧源图，逐像素 MAD + 相关度 + 平移搜索） | `python frame_fidelity.py` ／ `s01 --cmp` |
 
@@ -75,6 +75,7 @@ P.frame_path("A1_xxx.png")   # 首帧查找（会自动兼顾 _锚点/ 子目录
 9. **空镜/道具首帧上禁止写人物**——首帧里没有的人，提示词写了模型就会**凭空造一个**（s13 事故：造出的"陆远"与下一镜对不上 = 观众看到"像变了个人"，且把 s14 的动作提前演完 → 两镜重复）
 10. **任何"镜长驱动的时间"都不能硬编码秒数**——改了某一镜的帧数，底乐分段/静默窗/音效入点会整体错位。一律用「镜号 + 镜内偏移」表达（`make_music.py` 的 `T(镜号, 秒)` / `assemble_ep01.py` 的音效表）
 
+13. **镜号文件名一律「s + 数字 + 可选字母」**（如 `s22b_xxx.mp4`），脚本按 (数字, 字母) **自然排序**——不要写 `s[0-9][0-9]_*` 这类「下划线紧跟两位数字」的模式，它会把补拍镜漏掉（曾因此少拼一镜、成片短 5 秒）。**加镜后必跑镜数自检**：`len(assemble_ep01.shots())` 应等于 `len(gen_ep01_h3.SHOTS)`
 **装配**
 11. **`amix duration=first` 取的是输入列表第一位**——主音轨必须排第一，否则音轨被截断（**容器时长看不出**，必须量音轨）
 12. **混音要在拼接之后、按整片绝对时间做**——单镜内混音会被镜长截断

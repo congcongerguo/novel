@@ -51,7 +51,7 @@ LY = a 30-year-old lean Chinese man, thin wiry build, short messy black hair,
 | A1 | **废品收购站 · 场景锚点** ★新 | 场 4 全部 7 镜共用背景 | `a narrow alley corner piled with scrap: machine shells, sheet metal, half-dismantled fridge, stack of unknown-brand monitors, a plastic canopy overhead, vertical 9:16` |
 | A2 | **那台旧设备 · 道具锚点** ★新 | 场 4/6 共 6 镜 | `a waist-high machine, rusted beyond original colour, flaking rust, a dusty control panel with a single lever, a dusty two-prong socket on its side, vertical framing` |
 | A3 | **充电头 + 三孔圆口插座** ★新 | s01 钩子 / s21–22 | `extreme close-up: a 2026-era two-prong flat-pin charger held against a round three-hole wall socket, does not fit, worn bright copper prongs on a fingertip` |
-| A4 | **2026 手机屏幕（2%）** ★关键 | s22 集尾 | `close-up of an old smartphone screen from 2026, an old-style interface, battery icon at 2%, warm screen glow on a man's face` |
+| A4 | **2026 手机 · 充电界面（2%）** ★关键 | s24 集尾 | `extreme close-up of an old phone screen just lit, showing one simple old charging screen: a battery icon with a lightning bolt inside it and the figure 2% beside it, warm screen glow on a man's face and glasses` |
 | A5 | **旧设备的 2026 界面** ★新 | s15–16 | `a cracked screen showing a year-2026-era interface: old fonts, old icons, dim warm glow, dust on the glass` |
 | A6 | **卖旧零件的摊主**（单场角色） | s05 | `a middle-aged Chinese man in an old jacket wiping a pile of screws with a rag, indifferent expression, street stall` |
 
@@ -84,14 +84,18 @@ LY = a 30-year-old lean Chinese man, thin wiry build, short messy black hair,
 | s19 | 4-废品站 | "怎么知道拨这儿"／"先拨拨看"＋塞干粮硬币 | 12.3s | 294 | 4 句 | **新** |
 | s20 | 4-废品站 | "别往新城区说"／"它们不爱听这个" | 12.3s | 294 | 3 句 | 新 |
 | s21 | 5-暮·巷口 | 干粮·"旧人靠吃饭活着"／"三种人"／"你猜" | 12.3s | 294 | 4 句 | **新** |
-| s22 | 6-夜·废品站 | 走两步·摸到兜里的充电头·走回来蹲下 | 8.7s | 209 | V.O.④ | **新**（A2） |
-| s23 | 6-夜 | 电源口特写·两脚扁插·插上 | 8.7s | 209 | V.O.⑤ | **新**（A2/A3） |
-| s24 | 6-夜 | **手机亮起 2%** ★集尾 | 8.0s | 192 | — | **新**（A4） |
+| s22 | 6-夜·废品站 | 走两步·摸到兜里的充电头·走回来蹲下 | 8.7s | 209 | — | **新**（A2） |
+| **s22b** | 6-夜 | **充电头在手心（道具确认镜）★2026-09-12 新增** | 5.2s | 124 | — | **新**（A3） |
+| s23 | 6-夜 | 蹲到设备侧面插上（不拍机械细节·拍脸与那一下光） | 8.7s | 209 | V.O.⑤ | **新**（A2/A3） |
+| s24 | 6-夜 | **手机充电界面 · 2%** ★集尾 | 8.0s | 192 | — | **新**（A4） |
 | s25 | 6-夜 | 设备屏幕又亮一下·电流变了·他抬头 | 7.3s | 175 | V.O.⑥ | **新**（A5） |
 
-**合计 25 镜 · 约 197 秒。** 若取版本 A（2 分钟）：砍 s21，并把 s08/s09 合成一镜、s18/s19 合成一镜 → 17 镜 ~120s。
+**合计 26 镜 · 约 202 秒。**
 
-> 注：这里 25 镜比前面估的 23 多了 2 镜（s20 单独立起来 + s24/s25 拆开），因为**集尾那两镜必须分开**——"手机亮"和"设备又亮一下"是两个独立信息点，合在一起观众会漏掉钩子。
+> **s22b 为什么加（2026-09-12 · 作者指出"s24/s25 有点奇怪，也没旁白，不知道在干什么"）**：
+> 场 6 的因果链是「摸到充电头 → 插进设备侧面的口 → **亮的是自己的手机** → 2%」，但原剪辑里**第一、二环都没有画面**（s22 只拍"手插兜"、s23 按作者要求不拍插座细节）→ 观众不知道那 2% 从哪来。
+> 补上 s22b（**静态道具特写**：手心里捏着那个 2026 充电头）后，因果就通了。**选静态握持而不是"掏出来/插进去"的动作**，是因为 AI 生成机械动作不可靠（作者原话："生成的一直不好"）。
+> 同时 s24 的屏幕内容由"旧界面 + 右上角小字 2%"改为**直接的充电界面（电池图标 + 闪电 + 2%）**——作者定："想表达的太复杂了，直接显示充电界面就行"。
 
 ---
 
@@ -198,10 +202,10 @@ NEG  = （沿用 visual-spec-lock §4.3 全文，含竖屏负向词 letterbox / 
 > 脚本：`tools/seedream_batch.py`（`python seedream_batch.py s01 s13 …` ／ `all`）
 > 输出：`releases/2026-09-12_ep01_成片包/02_分镜首帧/` ｜ 尺寸锁定 **1152×2048（9:16）** ｜ 实测 **38–76 秒/张**
 
-### ✅ 全部 25 镜首帧已出齐（2026-09-12）
+### ✅ 全部 26 镜首帧已出齐（2026-09-12，含补拍的 s22b）
 
 **耗时**：19 分 56 秒（19 张新增，38–114 秒/张）｜全部 **1152×2048（9:16）**
-**验收件**：`releases/2026-09-12_ep01_成片包/02_分镜首帧/_联系表_ep01_25镜.png`（25 张拼一张，脚本 `tools/contact_sheet.py`）
+**验收件**：`releases/2026-09-12_ep01_成片包/02_分镜首帧/_联系表_ep01_26镜.png`（26 张拼一张，脚本 `tools/contact_sheet.py`）
 
 | 场 | 镜 | 文件 |
 |----|----|------|
@@ -230,9 +234,9 @@ NEG  = （沿用 visual-spec-lock §4.3 全文，含竖屏负向词 letterbox / 
    - 场景/道具锚点图要作为 `image` **参考图**传进后续镜，否则每张独立生成 = 背景与道具必然漂移
    - 实现：`SHOTS` 的 ref 写成列表，如 `[LUYUAN, A1, A2]`；脚本自动拼"保持 image N 的场景/道具不变"的说明（`REF_NOTE`）
    - **锚点图本身不引用自己**（s01=A3 源、s13=A1 源、s15=A2 源、s24=A4 源 → 它们只传角色参考）
-   - 已挂锚点的镜：s10(A4) s12(A3) s14(A1) s16(A2) s17(A1,A2) s18(A1,A2) s20(A1) s21(A1) s22(A1,A2) s23(A2) s25(A1,A2)
+   - 已挂锚点的镜：s10(A4) s12(A3) s14(A1) s16(A2) s17(A1,A2) s18(A1,A2) s20(A1) s21(A1) s22(A1,A2) **s22b(A3)** s23(A2/A3) s25(A1,A2)
 8. **⚠️ 同一场戏必须共用常量**（2026-09-12）
-   - **光色**：`INST_WARM`（配给点 s07–s11）、`NIGHT_WARM`（夜戏 s22–s25）、`DUSK`（黄昏）
+   - **光色**：`INST_WARM`（配给点 s07–s11）、`NIGHT_WARM`（夜戏 s22–s25 含 s22b）、`DUSK`（黄昏）
    - **轴线**：`AXIS_WINDOW`（配给点连续对白：侧后 3/4、面向屏幕、不看镜头）——**不许一镜侧后、一镜正面朝镜头**
    - 理由：各写一遍必然错乱（配给点曾出现 +1.4~+37.2 的散乱分布，且 s08–s11 误成"面对观众"）
 9. **⚠️ Seedream 提示词零否定词**——"不要冷/not too dark"会被反向执行（见 `生成管线.md` §二·C）
@@ -240,15 +244,15 @@ NEG  = （沿用 visual-spec-lock §4.3 全文，含竖屏负向词 letterbox / 
 
 ---
 
-## 七、视频进度（MiniMax H3 · 本地 ComfyUI · 全部 25 镜已完成）
+## 七、视频进度（MiniMax H3 · 本地 ComfyUI · 全部 26 镜已完成）
 
 > 脚本：`tools/gen_ep01_h3.py`（`python gen_ep01_h3.py s01` ／ `all`）
 > 输出：`releases/2026-09-12_ep01_成片包/03_镜头视频/`
 > 规格：**480×832 竖屏 / 24fps / 全部含音频轨（H3 原生声景 + 中文对白）**
 
-### ✅ 25/25 镜完成（2026-09-12 · 第三版 · 节点已修正）
+### ✅ 26/26 镜完成（2026-09-12 · 第三版 · 节点已修正）
 
-**成片合计 230.5 秒（3 分 50 秒）**，总 27.1 MB，单镜 5.88s–12.96s，**异常 0 镜**（总耗时 4 小时 54 分，串行）。
+**正片合计 234.95 秒（3 分 55 秒）· 26 镜**，总 28.9 MB，单镜 5.17s–12.96s（含新增 s22b），**异常 0 镜**（总耗时 4 小时 54 分，串行）。
 
 > ⚠️ **2026-09-12 修正（s13）**：s13 原为 **141 帧（5.88s）**、提示词里写了"陆远从左边走进画面 → 停下 → 坐下"，而它的首帧是 **A1 空镜**（画面里没有人）——
 > 结果 H3 **凭空生成了一个"陆远"**：外观无从锚定（角色卡只是软参考），与下一镜 s14 的陆远对不上（作者观感："s13 到 s14 不连贯，像变了个人"），而且把 s14 的"坐下"提前演完了，两镜动作重复。
@@ -257,7 +261,7 @@ NEG  = （沿用 visual-spec-lock §4.3 全文，含竖屏负向词 letterbox / 
 > **教训已成铁律**（`spec/visual/h3提示词规范.md` 铁律 4）：**首帧里没有的人/东西，提示词里一个字都别写**。
 
 **⭐ 关键修正（第三版）**：改用 **`Yuan_MiniMaxH3Video` · `mode=图生视频`**，首帧走 `first_frame`（**几何锚点**）。
-像素级验证（`tools/frame_fidelity.py`）：**25/25 镜第 0 帧与首帧源图 corr 0.998–1.000、偏移全为 (0,0)** —— 首帧彻底锁死。
+像素级验证（`tools/frame_fidelity.py`）：**26/26 镜第 0 帧与首帧源图 corr 0.998–1.000、偏移全为 (0,0)** —— 首帧彻底锁死。
 
 | 版本 | 节点/模式 | 首帧 corr | 结局 |
 |------|----------|:---:|------|

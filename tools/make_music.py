@@ -29,6 +29,7 @@ OUT = P.EP01_MUSIC
 rng = np.random.default_rng(1937)
 
 ORDER = ["s%02d" % i for i in range(1, 26)]
+ORDER.insert(ORDER.index("s23"), "s22b")   # 道具确认镜插在 s22 与 s23 之间（2026-09-12 新增）
 _FF = P.FFMPEG_FULL if Path(P.FFMPEG_FULL).exists() else r""
 
 # ── 时间轴：从实际镜长算出每镜的绝对起点 ──────────────────────────

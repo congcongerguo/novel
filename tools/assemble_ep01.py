@@ -102,7 +102,20 @@ def audio_duration(p):
 
 
 def shots():
-    return sorted(p for p in VID.glob("s[0-9][0-9]_*.mp4"))
+    """按镜号自然排序取单镜文件。
+
+    ⚠️ 不要用 `s[0-9][0-9]_*.mp4` 这种"下划线紧跟两位数字"的模式——
+    它会把 `s22b_充电头在手心.mp4` 这类**带字母后缀的补拍镜**漏掉（曾因此少拼一镜、成片短了 5 秒）。
+    改为「s + 数字 + 可选字母 + 下划线」，并按 (数字, 字母) 排序，保证 s22 < s22b < s23。
+    """
+    import re as _re
+    ps = [p for p in VID.glob("s*_*.mp4") if _re.match(r"^s\d+[a-z]?_", p.name)]
+
+    def _key(p):
+        m = _re.match(r"^s(\d+)([a-z]?)", p.stem)
+        return (int(m.group(1)), m.group(2)) if m else (9999, "z")
+
+    return sorted(ps, key=_key)
 
 
 def timeline():
