@@ -244,28 +244,40 @@ NEG  = （沿用 visual-spec-lock §4.3 全文，含竖屏负向词 letterbox / 
 
 > 脚本：`tools/gen_ep01_h3.py`（`python gen_ep01_h3.py s01` ／ `all`）
 > 输出：`releases/2026-09-12_ep01视频/`
-> 规格：**480×832 竖屏 / 24fps / 全部含音频轨（H3 原生声景）**
+> 规格：**480×832 竖屏 / 24fps / 全部含音频轨（H3 原生声景 + 中文对白）**
 
-### ✅ 25/25 镜齐全（2026-09-12）
+### ✅ 25/25 镜完成（2026-09-12 · 第三版 · 节点已修正）
 
-**成片合计 230.5 秒（3 分 50 秒）**，总 23.6 MB，单镜 5.88s–12.96s。
+**成片合计 230.5 秒（3 分 50 秒）**，总 27.1 MB，单镜 5.88s–12.96s，**异常 0 镜**（总耗时 4 小时 54 分，串行）。
+
+**⭐ 关键修正（第三版）**：改用 **`Yuan_MiniMaxH3Video` · `mode=图生视频`**，首帧走 `first_frame`（**几何锚点**）。
+像素级验证（`tools/frame_fidelity.py`）：**25/25 镜第 0 帧与首帧源图 corr 0.998–1.000、偏移全为 (0,0)** —— 首帧彻底锁死。
+
+| 版本 | 节点/模式 | 首帧 corr | 结局 |
+|------|----------|:---:|------|
+| v1 | ReferenceToVideo（无对白标记、声景触发词、无轴线） | ≈0.20 | 废弃 |
+| v2 | ReferenceToVideo（官方语法版） | 0.13–0.43 | 废弃 |
+| **v3** | **Yuan_MiniMaxH3Video · 图生视频** | **0.998–1.000** | ✅ **现行** |
+
+> ⚠️ 另两版归档：`releases/2026-09-12_ep01视频_废弃v1/`、`..._废弃v2_语法对但未锁首帧/`
+
+**整集粗剪**（无字幕）：`releases/2026-09-12_ep01视频/_整集粗剪_ep01_无字幕_2026-09-12.mp4`（3:50.49）
+**音轨验收件**：`releases/2026-09-12_ep01视频/_音频验收/*.mp3`（10 个有对白镜，用 `tools/extract_audio.py` 抽）
 
 **帧数表**：全部按 H3 约束 `124 + 17k`（k=0..10 → 124/141/158/175/192/209/226/243/260/277/294 帧）
 
-**H3 提示词结构**（每镜 7 段，见 `tools/gen_ep01_h3.py` 的 `P` 字典）：
-`subject_definitions` / `summary` / `retention_analysis`（哪些参考图元素保留） / `detailed_description`（含逐段分时动作） / `overall_soundscape`（环境音） / 旋律层
+**H3 提示词结构**（每镜七段，见 `tools/gen_ep01_h3.py` 的 `SHOTS` 字典）：
+`subject_definitions`（场景锚定首帧） / `summary` / `retention_analysis`（逐元素保留度） / `detailed_description`（机位轴线 + 逐段起止时间 + `<d>[Chinese]` 对白） / `overall_soundscape`（零触发词） / `non_diegetic_music`
 
-### ⚠️ 两条必须遵守的工程铁律（踩过的坑）
+### ⚠️ 三条必须遵守的工程铁律（都踩过）
 
-1. **H3 批次必须串行**——并行跑两批会抢同一 GPU，单镜耗时从 6–7 分钟暴涨到 **11–38 分钟**（s04 曾 38.75 分钟）。想省时间反而更慢
-2. **Windows TIME_WAIT 端口耗尽**——用 `urllib` 每 10 秒轮询会新建 TCP 连接，一镜 40–80 次 → 临时端口耗尽 → **提交/下载被系统掐断**。根治：`requests.Session` 连接池 + `urllib3.Retry` + 轮询放宽到 15s（脚本已改）
+1. **必须用 `Yuan_MiniMaxH3Video` 的 `图生视频` 模式**——`MiniMaxH3ReferenceToVideo` / `参考图生视频` 模式**没有首帧通道**，怎么调提示词都锁不住（详见 `h3提示词规范.md` 第五节）
+2. **批次必须串行**——并行两批抢同一 GPU，单镜 6–7 分钟暴涨到 11–38 分钟
+3. **Windows TIME_WAIT 端口耗尽**——用 `requests.Session` 连接池 + `urllib3.Retry`，轮询 15s（原 `urllib` 每 10s 新建连接，一镜 40–80 次 → 提交/下载被掐）
 
-**容错机制（已内置）**：
-- 下载**重试 4 次**（间隔 10s、超时 900s）
-- 下载彻底失败 → 记录 pid 到 `_待取回.json`，**事后可用 `/view` 单独取回，不必重新生成**（s12 就是这么捞回来的）
-- 单镜异常**只跳过该镜**，不终止整批
+**容错机制（已内置）**：下载重试 4 次；失败记 pid 到 `_待取回.json`（可事后用 `/view` 单取，**不必重跑**）；单镜异常只跳过该镜。
 
-**产物取回（ComfyUI history 法）**：视频已生成但脚本中断时，可从 `/history/<pid>` 的 `outputs` 取 `filename/subfolder`，用 `/view?filename=…&subfolder=…&type=output` 下载——**别重跑**。
+**产物取回（ComfyUI history 法）**：视频已生成但脚本中断时，从 `/history/<pid>` 的 `outputs` 取 `filename/subfolder`，用 `/view?filename=…&subfolder=…&type=output` 下载——**别重跑**。
 
 ---
 
@@ -274,6 +286,7 @@ NEG  = （沿用 visual-spec-lock §4.3 全文，含竖屏负向词 letterbox / 
 **工具链已探明**：
 - **ffmpeg 不在 PATH** → 用 `C:/Users/oo/anaconda3/envs/indextts/Library/bin/ffmpeg.exe`（ffprobe 同目录）
 - TTS 可用 envs：`indextts` / `gpt-sovits` / `cosyvoice`
-- **H3 只出声景，不含对白** → 台词与 V.O. 必须单独配音后混轨
+- **H3 已出声景 + 中文对白**；**V.O.（6 句旁白）不进 H3**，后期单独配音
 
 **台本见**：`spec/visual/ep01-配音剪辑台本.md`
+**规范见**：`spec/visual/h3提示词规范.md`
